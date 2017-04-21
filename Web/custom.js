@@ -57,3 +57,9 @@ $(document).ready(function(e){
         $('.input-group #search_param').val(param);
     });
 });
+
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
