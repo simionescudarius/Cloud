@@ -249,4 +249,62 @@ div.row > div:nth-child(5) {
   }
 .modal-footer {
       background-color: #f9f9f9;
-  }
+}
+
+@media screen and (max-width: 767px){
+	.mygalery{
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+
+	.mypanel-right{
+		float: left;
+		text-align: center;
+		max-width: 520px;
+	}
+
+	.mypanel-left{
+		text-align: center;
+		max-width: 520px;
+	}
+
+	.in{
+		background-size: 100% 100%;
+	}
+
+}
+
+@media screen and (max-width: 400px){
+	.mygalery{
+		margin-left: 0;
+		margin-right: 0;
+		width:100%;
+	}
+	
+	.mypanel-right{
+		float: left;
+		text-align: center;
+		max-width: 520px;
+	}
+
+	.in{
+		background-size: 100% 100%;
+	}
+
+	.mypanel-left{
+		text-align: center;
+		max-width: 520px;
+	}
+
+	#select-btn{
+	height: 30px;
+	}
+
+	#search-btn{
+	height: 30px;
+	}
+
+	#search-form{
+	height: 30px;
+	}
+}
