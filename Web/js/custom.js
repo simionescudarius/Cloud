@@ -59,17 +59,19 @@ $(document).ready(function(e){
 });
 
 $(document).ready(function(){
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
-    });
-});
-
-$(document).ready(function(){
-    $("#myBtn").click(function(){
-        $("#myModal").modal();
+    $("#login").click(function(){
+        $("#loginModal").modal();
     });
     
     $("#register").click(function(){
+        $("#registerModal").modal();
+    });
+
+    $("#hlogin").click(function(){
+        $("#loginModal").modal();
+    });
+    
+    $("#hregister").click(function(){
         $("#registerModal").modal();
     });
 

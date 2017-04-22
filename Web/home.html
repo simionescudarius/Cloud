@@ -23,8 +23,7 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li class="active"> <a href="#">Home</a> </li>
-				<li><a href="#">Link</a></li>
+		        <li class="active"> <a href="home.html">Home</a> </li>
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu">
@@ -37,17 +36,20 @@
 		            <li><a href="#">One more separated link</a></li>
 		          </ul>
 		        </li>
+		      <li class="hiddenNavbarBtn"> <a href="#" id="hlogin">Login</a> </li>
+			  <li class="hiddenNavbarBtn"> <a href="#" id="hregister">Register</a> </li>
 		      </ul>
-
- 				 <button type="button" class="btn btn-default btn-lg" id="register" style="float:right;">Sign up</button>
 				 
- 				 <button type="button" class="btn btn-default btn-lg" id="myBtn" style="float:right;">Sign in</button>
-				 <div class="modal fade" id="myModal" role="dialog">
+				 <div class="btns-lgrg">
+				 <button type="button" class="btn btn-default btn-lg" id="login">Log in</button>
+ 				 <button type="button" class="btn btn-default btn-lg" id="register">Register</button>
+ 				 </div>
+				 <div class="modal fade" id="loginModal" role="dialog">
 				    <div class="modal-dialog">
 				      <div class="modal-content">
 				        <div class="modal-header" style="padding:35px 50px;">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4><span class="glyphicon glyphicon-lock"></span> Sign in</h4>
+				          <h4><span class="glyphicon glyphicon-log-in"></span> Sign in</h4>
 				        </div>
 				        <div class="modal-body" style="padding:40px 50px;">
 				          <form role="form" action="logged.html">
@@ -62,11 +64,10 @@
 				            <div class="checkbox">
 				              <label><input type="checkbox" value="" checked>Remember me</label>
 				            </div>
-				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign in</button>
+				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
 				          </form>
 				        </div>
 				        <div class="modal-footer">
-				          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 				          <p>Not a member? <a href="#">Sign Up</a></p>
 				          <p>Forgot <a href="#">Password?</a></p>
 				        </div>
@@ -79,7 +80,7 @@
 				      <div class="modal-content">
 				        <div class="modal-header" style="padding:35px 50px;">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4><span class="glyphicon glyphicon-lock"></span> Sign up</h4>
+				          <h4><span class="glyphicon glyphicon-ok-sign"></span> Register</h4>
 				        </div>
 				        <div class="modal-body" style="padding:40px 50px;">
 				          <form role="form">
@@ -98,15 +99,15 @@
 				            </div>
 							
 							<div class="form-group">
-				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Location</label>
+				              <label for="psw"><span class="glyphicon glyphicon-home"></span>Location</label>
 				              <input type="text" class="form-control" id="psw" placeholder="Enter location">
 				            </div>
 							<div class="form-group">
-				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Mobile phone number</label>
+				              <label for="psw"><span class="glyphicon glyphicon-earphone"></span>Phone number</label>
 				              <input type="text" class="form-control" id="psw" placeholder="Enter mobile phone number">
 				            </div>
 				        
-				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Sign up</button>
+				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok-sign"></span> Sign up</button>
 				          </form>
 				        </div>
 				    
@@ -115,12 +116,12 @@
 				  </div> 				  
 		      </div>
 		  </div>
-</nav>
+	</nav>
 
 		<div class="container" id="banner">
     	    <div class="input-group" id="search-group">
                 <div class="input-group-btn btn-grou">
-                    <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" id="select-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" id="btn-select">
                     	<span id="search_concept">All</span> <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu " role="menu">
@@ -136,7 +137,7 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Search" id="search-form">
                 <span class="input-group-btn btn-grou">
-                    <button class="btn btn-default" type="Search" id="search-btn">Search</button>
+                    <button class="btn btn-default" type="Search" id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>            
 		</div>
@@ -146,7 +147,7 @@
 	<div class="panel-heading text-center head-pan"><big class="h3">Most popular</big></div>
 		<div class="row">
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		       	 <div class="panel panel-default mypanel-left">
+		       	 <div class="panel panel-default" id = "mypanel-left">
 		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
 		                </a><small>Nr. camere: 3</small><br>
 		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
@@ -157,7 +158,7 @@
 		         </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-right">
+		        <div class="panel panel-default" id = "mypanel-right">
 		            <div class="panel-heading ">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bethoven studio.</h4>
@@ -169,7 +170,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-left">
+		        <div class="panel panel-default" id = "mypanel-left">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bach apartment.</h4>
@@ -181,7 +182,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-right">
+		        <div class="panel panel-default" id = "mypanel-right">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Chopin apartment.</h4>
@@ -195,19 +196,37 @@
 	</div>
 </div> 
 	
-		<div class="container">
-		<h5>Noise pollution</h5>
-        <div class="switch">
-        <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-        <label for="cmn-toggle-4"></label>
-        </div>
+		<div class="container switch-container">
+		<div class="row">
+			<div class="col-sm-1">	
+				<h5>Noise pollution</h5>
+		        <div class="switch">
+		        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+		        <label for="cmn-toggle-1"></label>
+		        </div>
+		    </div>
+		    <div class="col-sm-1">	
+		        <h5>Waste pollution</h5>
+		        <div class="switch">
+		        <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+		        <label for="cmn-toggle-2"></label>
+		        </div>
+		    </div>
+		    <div class="col-sm-1">	
+		        <h5>Chimic pollution</h5>
+		        <div class="switch">
+		        <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+		        <label for="cmn-toggle-3"></label>
+		        </div>
+		    </div>
 		</div>
-	
-		<div class="container">
+		</div>
+
+		<div class="map-container">
         <div id="map"></div>
         </div>
 
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZksBYKq4HH8pLQoPjoTDBtSJr_-40FWI"></script>
         <script src="js/custom.js"></script>
