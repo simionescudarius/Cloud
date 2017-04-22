@@ -62,4 +62,10 @@ $(document).ready(function(){
     $("#myBtn").click(function(){
         $("#myModal").modal();
     });
+	
+	//code for register form activate
+	$("#register").click(function(){
+        $("#registerModal").modal();
+    });
+
 });
