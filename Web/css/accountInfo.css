@@ -1,0 +1,76 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background:#eee;
+}
+
+.title{
+ margin-left:20px
+}
+
+
+.glyphicon-lg{
+    font-size:4em
+}
+
+.panel .panel-heading {
+    padding: 5px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom: 1px solid #DDD;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.panel .panel-heading .panel-title {
+    padding: 10px;
+    font-size: 17px;
+}
+
+.nav-email > li:first-child + li:active {
+  margin-top: 0px;
+}
+.nav-email > li + li {
+  margin-top: 1px;
+}
+.nav-email li {
+  background-color: white;
+}
+.nav-email li.active {
+  background-color: transparent;
+}
+.nav-email li.active .label {
+  background-color: white;
+  color: black;
+}
+.nav-email li a {
+  color: black;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.nav-email li a:hover {
+  background-color: #EEEEEE;
+}
+.nav-email li a i {
+  margin-right: 5px;
+}
+.nav-email li a .label {
+  margin-top: -1px;
+}
+
+.nav-email-subtitle {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #333;
+  margin-bottom: 15px;
+  margin-top: 30px;
+}
+
+.page-header{
+  text-align: center;    
+}
+
+.profile-dropdown{
+  float: right;
+}
