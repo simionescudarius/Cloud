@@ -58,30 +58,18 @@ $(document).ready(function(e){
     });
 });
 
-$(document).ready(function(){
-    $("#login").click(function(){
-        $("#loginModal").modal();
-    });
-    
-    $("#register").click(function(){
-        $("#registerModal").modal();
-    });
+function loginModal(){
+    $("#loginModal").modal();
+}
 
-    $("#hlogin").click(function(){
-        $("#loginModal").modal();
-    });
-    
-    $("#hregister").click(function(){
-        $("#registerModal").modal();
-    });
+function registerModal(){
+    $("#registerModal").modal();
+}
 
-     $("#declineBtn").click(function(){
-        $("#declineModal").modal();
-    });
-      $("#declineBtn2").click(function(){
-        $("#declineModal").modal();
-    });
-       $("#declineBtn3").click(function(){
-        $("#declineModal").modal();
-    });
-});
+function declineModal(){
+    $("#declineModal").modal();
+}
+
+function userModal(){
+        $("#profileModal").modal();
+}

@@ -36,13 +36,13 @@
 		            <li><a href="#">One more separated link</a></li>
 		          </ul>
 		        </li>
-		      <li class="hiddenNavbarBtn"> <a href="#" id="hlogin">Login</a> </li>
-			  <li class="hiddenNavbarBtn"> <a href="#" id="hregister">Register</a> </li>
+		      <li class="hiddenNavbarBtn"> <a href="#" id="hiddenlogin" onclick="loginModal ()">Login</a> </li>
+			  <li class="hiddenNavbarBtn"> <a href="#" id="hiddenregister" onclick="registerModal ()">Register</a> </li>
 		      </ul>
 				 
 				 <div class="btns-lgrg">
-				 <button type="button" class="btn btn-default btn-lg" id="login">Log in</button>
- 				 <button type="button" class="btn btn-default btn-lg" id="register">Register</button>
+				 <button type="button" class="btn btn-default btn-lg" id="login" onclick="loginModal ()">Log in</button>
+ 				 <button type="button" class="btn btn-default btn-lg" id="register" onclick="registerModal ()">Register</button>
  				 </div>
 				 <div class="modal fade" id="loginModal" role="dialog">
 				    <div class="modal-dialog">
@@ -147,7 +147,7 @@
 	<div class="panel-heading text-center head-pan"><big class="h3">Most popular</big></div>
 		<div class="row">
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		       	 <div class="panel panel-default" id = "mypanel-left">
+		       	 <div class="panel panel-default mypanel-left">
 		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
 		                </a><small>Nr. camere: 3</small><br>
 		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
@@ -158,7 +158,7 @@
 		         </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default" id = "mypanel-right">
+		        <div class="panel panel-default mypanel-right">
 		            <div class="panel-heading ">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bethoven studio.</h4>
@@ -170,7 +170,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default" id = "mypanel-left">
+		        <div class="panel panel-default mypanel-left">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bach apartment.</h4>
@@ -182,7 +182,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default" id = "mypanel-right">
+		        <div class="panel panel-default mypanel-right">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Chopin apartment.</h4>
@@ -198,22 +198,22 @@
 	
 		<div class="container switch-container">
 		<div class="row">
-			<div class="col-sm-1">	
+			<div class="col-md-2 col-sm-2 col-xs-4">	
 				<h5>Noise pollution</h5>
 		        <div class="switch">
 		        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
 		        <label for="cmn-toggle-1"></label>
 		        </div>
 		    </div>
-		    <div class="col-sm-1">	
+		    <div class="col-md-2 col-sm-2 col-xs-4">	
 		        <h5>Waste pollution</h5>
 		        <div class="switch">
 		        <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
 		        <label for="cmn-toggle-2"></label>
 		        </div>
 		    </div>
-		    <div class="col-sm-1">	
-		        <h5>Chimic pollution</h5>
+		    <div class="col-md-2 col-sm-2 col-xs-4">	
+		        <h5>Waste pollution</h5>
 		        <div class="switch">
 		        <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
 		        <label for="cmn-toggle-3"></label>
