@@ -1,15 +1,10 @@
-body {
+ 	body {
     font-family: 'Montserrat', sans-serif;
     background:#eee;
 }
 
 .title{
  margin-left:20px
-}
-
-
-.glyphicon-lg{
-    font-size:4em
 }
 
 .panel .panel-heading {
@@ -26,6 +21,7 @@ body {
     padding: 10px;
     font-size: 17px;
 }
+
 
 .nav-email > li:first-child + li:active {
   margin-top: 0px;
@@ -75,33 +71,20 @@ body {
   float: right;
 }
 
-
-.mygalery{
-	padding-left: 0px;
-	padding-right: 0px;
-	margin-left: 20px;
-	margin-right: 20px;
-	height: auto;
-	width: auto;
-
+.myContainer{
+	width: 100%;
+	margin-top: 1%;
 }
 
-.mypanel-left{
-	float:left;
+.mypanel{
+	
 	border-style: solid;
 	border: 10px;
-	height: 320px;
+	margin-right: 10px;
+	margin-left: 10px;
+	height: 318px;
+	float: right;
 	width: 100%;
-	max-width: 320px;
-}
-
-.mypanel-right{
-	float:right;
-	border-style: solid;
-	border: 10px;
-	height: 320px;
-	width: 100%;
-	max-width: 320px;
 }
 
 .img{
@@ -113,6 +96,10 @@ body {
 	width: 100%;
 	max-width: 100%;
 	height: 65%;
+}
+
+.test{
+	position: relative;
 }
 
 

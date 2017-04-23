@@ -75,4 +75,13 @@ $(document).ready(function(){
         $("#registerModal").modal();
     });
 
+     $("#declineBtn").click(function(){
+        $("#declineModal").modal();
+    });
+      $("#declineBtn2").click(function(){
+        $("#declineModal").modal();
+    });
+       $("#declineBtn3").click(function(){
+        $("#declineModal").modal();
+    });
 });

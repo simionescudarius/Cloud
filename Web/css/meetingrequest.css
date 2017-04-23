@@ -1,17 +1,11 @@
 
-
-body {
+  body {
     font-family: 'Montserrat', sans-serif;
     background:#eee;
 }
 
 .title{
  margin-left:20px
-}
-
-
-.glyphicon-lg{
-    font-size:4em
 }
 
 .panel .panel-heading {
@@ -28,6 +22,7 @@ body {
     padding: 10px;
     font-size: 17px;
 }
+
 
 .nav-email > li:first-child + li:active {
   margin-top: 0px;
@@ -76,12 +71,116 @@ body {
 .profile-dropdown{
   float: right;
 }
-.mygalery{
-	padding-left: 0px;
-	padding-right: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	height: auto;
-	width: auto;
 
+.myContainer{
+  width: 100%;
+  margin-top: 1%;
+}
+
+.test{
+  position: relative;
+}
+
+.agenda {  
+  margin-left: 25%;
+  margin-right: 1%;
+}
+
+/* Dates */
+.agenda .agenda-date { 
+  width: 1%;
+}
+
+.agenda .agenda-date .dayofmonth {
+  width: auto;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 12px; 
+}
+
+
+/* Times */
+.agenda .agenda-time { 
+  width: 5%; 
+}
+
+.agenda .agenda-requester {  
+  width: 4%;
+}
+.agenda .agenda-requester .agenda-requester{  
+  font-size: 15px;
+  height: 30px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.agenda .agenda-phone {  
+  width: 6%;
+}
+
+.agenda .agenda-phone .agenda-phone {  
+  margin-top: 20px;
+  font-size: 15px;
+  height: 30px;
+  width: 100%
+}
+
+.agenda .agenda-location {  
+  width: 6%;
+}
+
+.agenda .agenda-location .agenda-location {  
+  margin-top: 20px;
+  font-size: 15px;
+  height: 30px;
+  width: 100%
+}
+
+.agenda .agenda-announce {  
+  width: 6%;
+}
+
+.agenda .agenda-announce .agenda-announce {  
+  margin-top: 20px;
+  font-size: 15px;
+  height: 30px;
+  width: 100%
+}
+
+.agenda .agenda-decision{
+  width: 6%;
+  height: 100%;
+}
+.agenda-decision .decision-btn{
+  margin-top: 2%;
+  margin-left: 18%;
+  height: 94%;
+  width: 60%;
+}
+
+.decision-btn .btn-success{
+  border-width: 2px;
+  margin-bottom: 4%;
+  width: 100%;
+}
+
+.decision-btn .btn-danger{
+  border-width: 2px;
+  width: 100%;
+}
+
+.agenda-decision .modal-content{
+  height: 35%;
+  margin-top: 20%;
+  margin-left: 25%;
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+    
 }
