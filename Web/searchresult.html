@@ -1,0 +1,370 @@
+<html>
+    <head>
+        <title>Immobile</title>
+        <meta charset="UTF-8">
+        <!-- <meta http-equiv="refresh" content="4" > -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link href='css/searchresult.css' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+	    <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      		  <span class="sr-only">Toggle navigation</span>
+        	  <span class="icon-bar"></span>
+        	  <span class="icon-bar"></span>
+        	  <span class="icon-bar"></span>
+      		  </button>
+	    	  <a class="navbar-brand" href="#">Immobile</a>
+	    	</div>
+	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"> <a href="home.html">Home</a> </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="#">Action</a></li>
+		            <li><a href="#">Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#">Separated link</a></li>
+		            <li role="separator" class="divider"></li>
+		            <li><a href="#">One more separated link</a></li>
+		          </ul>
+		        </li>
+		      <li class="hiddenNavbarBtn"> <a href="#" id="hlogin">Login</a> </li>
+			  <li class="hiddenNavbarBtn"> <a href="#" id="hregister">Register</a> </li>
+		      </ul>
+				 
+				 <div class="btns-lgrg">
+				 <button type="button" class="btn btn-default btn-lg" id="login">Log in</button>
+ 				 <button type="button" class="btn btn-default btn-lg" id="register">Register</button>
+ 				 </div>
+				 <div class="modal fade" id="loginModal" role="dialog">
+				    <div class="modal-dialog">
+				      <div class="modal-content">
+				        <div class="modal-header" style="padding:35px 50px;">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4><span class="glyphicon glyphicon-log-in"></span> Sign in</h4>
+				        </div>
+				        <div class="modal-body" style="padding:40px 50px;">
+				          <form role="form" action="logged.html">
+				            <div class="form-group">
+				              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+				              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+				            </div>
+				            <div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+				              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+				            </div>
+				            <div class="checkbox">
+				              <label><input type="checkbox" value="" checked>Remember me</label>
+				            </div>
+				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-log-in"></span> Sign in</button>
+				          </form>
+				        </div>
+				        <div class="modal-footer">
+				          <p>Not a member? <a href="#">Sign Up</a></p>
+				          <p>Forgot <a href="#">Password?</a></p>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				  
+				  <div class="modal fade" id="registerModal" role="dialog">
+				    <div class="modal-dialog">
+				      <div class="modal-content">
+				        <div class="modal-header" style="padding:35px 50px;">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4><span class="glyphicon glyphicon-ok-sign"></span> Register</h4>
+				        </div>
+				        <div class="modal-body" style="padding:40px 50px;">
+				          <form role="form">
+				            <div class="form-group">
+				              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+				              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+				            </div>
+				            <div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+				              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+				            </div>
+							
+							   <div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span>Repeat Password</label>
+				              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+				            </div>
+							
+							<div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-home"></span>Location</label>
+				              <input type="text" class="form-control" id="psw" placeholder="Enter location">
+				            </div>
+							<div class="form-group">
+				              <label for="psw"><span class="glyphicon glyphicon-earphone"></span>Phone number</label>
+				              <input type="text" class="form-control" id="psw" placeholder="Enter mobile phone number">
+				            </div>
+				        
+				              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok-sign"></span> Sign up</button>
+				          </form>
+				        </div>
+				    
+				      </div>
+				    </div>
+				  </div> 				  
+		      </div>
+		  </div>
+	</nav>
+
+		<div class="container" id="banner">
+    	    <div class="input-group" id="search-group">
+                <div class="input-group-btn btn-grou">
+                    <button type="button" class="btn btn-default dropdown-toggle " data-toggle="dropdown" id="btn-select">
+                    	<span id="search_concept">All</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu " role="menu">
+                   	  <li><a href="#Studio">Studio</a></li>
+                      <li><a href="#Apartment1">Apartment 1 room</a></li>
+                      <li><a href="#Apartment2">Apartment 2 rooms</a></li>
+                      <li><a href="#Apartment3">Apartment 3 rooms</a></li>
+                      <li><a href="#Apartment4">Apartment 4 rooms</a></li>
+                      <li><a href="#Field">Field</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#all">All</a></li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control" placeholder="Search" id="search-form">
+                <span class="input-group-btn btn-grou">
+                    <button class="btn btn-default" type="Search" id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>            
+		</div>
+
+
+<div class="container panel panel-default mygalery">
+<div class="container1">
+<form>
+                      	<input type="text" class="span8" placeholder="Location">
+	  						<select class="span4">
+	  							<option>Neighborhood1</option>
+	  							<option>Neighborhood2</option>
+	  							<option>Neighborhood3</option>
+	  							<option>Neighborhood4</option>
+	  							<option>Neighborhood5</option>
+	  						</select>
+		              	<select>
+							<option>Date</option>
+							<option>Today</option>
+							<option>Yesterday</option>
+							<option>Last Week</option>
+							<option>Last Month</option>
+							<option>Last Year</option>
+						</select>
+						 	<select>
+							<option>Price</option>
+							<option>Cheap</option>
+							<option>Expensive</option>
+							
+						</select>
+							<select class="span6">
+	  							<option value="">+ 0 km</option>
+	  							<option value="">+ 2 km</option>
+	  							<option value="">+ 5 km</option>
+	  							<option value="">+ 10 km</option>
+	  						</select>
+	  						<select class="span6">
+	  							<option value="">Sorting</option>
+	  							<option value="">Relevant on top</option>
+	  							<option value="">Relevant on bottom</option>
+	  						</select>
+                      <select class="span6">
+	  							<option value="">Pollution </option>
+	  							<option value="">1</option>
+	  							<option value="">2</option>
+								<option value="">3</option>
+	  							<option value="">4</option>
+								<option value="">5</option>
+	  							<option value="">6</option>
+								<option value="">7</option>
+	  							<option value="">8</option>
+								<option value="">9</option>
+	  							<option value="">10</option>
+	  						</select>
+  					 <button type="button" class="btn btn-success" onclick="Wait for it !"> Sort </button>
+</form>
+</div>
+
+		<div class="row">
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		       	 <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
+		                </a><small>Nr. camere: 3</small><br>
+		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 130 m<sup>2</sup></small><br>
+		            
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/1.jpg);"></div>
+		         </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading ">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bethoven studio.</h4>
+		                </a><small>Nr. camere: 1</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 80 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/2.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bach apartment.</h4>
+		                </a><small>Nr. camere: 4</small><br>
+		                	<small>Pret: 250.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 150 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/4.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Chopin apartment.</h4>
+		                </a><small>Nr. camere: 2</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 100 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/3.jpg);"></div>
+		        </div>
+		    </div>
+	</div>
+	
+		<div class="row">
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		       	 <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
+		                </a><small>Nr. camere: 3</small><br>
+		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 130 m<sup>2</sup></small><br>
+		            
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/1.jpg);"></div>
+		         </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading ">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bethoven studio.</h4>
+		                </a><small>Nr. camere: 1</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 80 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/2.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bach apartment.</h4>
+		                </a><small>Nr. camere: 4</small><br>
+		                	<small>Pret: 250.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 150 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/4.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Chopin apartment.</h4>
+		                </a><small>Nr. camere: 2</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 100 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/3.jpg);"></div>
+		        </div>
+		    </div>
+	</div>
+		<div class="row">
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		       	 <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
+		                </a><small>Nr. camere: 3</small><br>
+		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 130 m<sup>2</sup></small><br>
+		            
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/1.jpg);"></div>
+		         </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading ">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bethoven studio.</h4>
+		                </a><small>Nr. camere: 1</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 80 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/2.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bach apartment.</h4>
+		                </a><small>Nr. camere: 4</small><br>
+		                	<small>Pret: 250.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 150 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/4.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Chopin apartment.</h4>
+		                </a><small>Nr. camere: 2</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 100 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/3.jpg);"></div>
+		        </div>
+		    </div>
+	</div>
+	
+	
+		<div class="container1" align=center >
+<ul class="pagination">
+              <li class="disabled"><a href="#">«</a></li>
+              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+</div>
+	
+</div> 
+	
+	
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZksBYKq4HH8pLQoPjoTDBtSJr_-40FWI"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
