@@ -311,5 +311,8 @@ input.cmn-toggle-round-flat:checked + label:after
 	height: 30px;
 	}
 }
-
+#sort-btn {
+    height:25px;
+  
+}
 .pagination>li>a, .pagination>li>span { border-radius: 50% !important;margin: 0 5px;}
