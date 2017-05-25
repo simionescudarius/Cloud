@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <!-- <meta http-equiv="refresh" content="4" > -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="static/css/bootstrap.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        <link href='css/index.css' rel='stylesheet' type='text/css'>
+        <link href='static/css/searchresult.css' rel='stylesheet' type='text/css'>
     </head>
 
     <body>
@@ -137,18 +137,118 @@
                 </div>
                 <input type="text" class="form-control" placeholder="Search" id="search-form">
                 <span class="input-group-btn btn-grou">
-                   <a href="result.html"><button class="btn btn-default" type="Search" id="search-btn">
-                   <span class="glyphicon glyphicon-search"></span></button></a>
+                    <button class="btn btn-default" type="Search" id="search-btn"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>            
 		</div>
 
 
 <div class="container panel panel-default mygalery">
-	<div class="panel-heading text-center head-pan"><big class="h3">Most popular</big></div>
+<div class="container1">
+<form>
+                      	<input type="text" class="span8" placeholder="Location">
+	  						<select class="span4">
+	  							<option>Neighborhood1</option>
+	  							<option>Neighborhood2</option>
+	  							<option>Neighborhood3</option>
+	  							<option>Neighborhood4</option>
+	  							<option>Neighborhood5</option>
+	  						</select>
+		              	<select>
+							<option>Date</option>
+							<option>Today</option>
+							<option>Yesterday</option>
+							<option>Last Week</option>
+							<option>Last Month</option>
+							<option>Last Year</option>
+						</select>
+						 	<select>
+							<option>Price</option>
+							<option>Cheap</option>
+							<option>Expensive</option>
+							
+						</select>
+							<select class="span6">
+	  							<option value="">+ 0 km</option>
+	  							<option value="">+ 2 km</option>
+	  							<option value="">+ 5 km</option>
+	  							<option value="">+ 10 km</option>
+	  						</select>
+	  						<select class="span6">
+	  							<option value="">Sorting</option>
+	  							<option value="">Relevant on top</option>
+	  							<option value="">Relevant on bottom</option>
+	  						</select>
+                      <select class="span6">
+	  							<option value="">Pollution </option>
+	  							<option value="">1</option>
+	  							<option value="">2</option>
+								<option value="">3</option>
+	  							<option value="">4</option>
+								<option value="">5</option>
+	  							<option value="">6</option>
+								<option value="">7</option>
+	  							<option value="">8</option>
+								<option value="">9</option>
+	  							<option value="">10</option>
+	  						</select>
+  					 <button type="button" id="sort-btn" class="btn btn-success" onclick="Wait for it !"> Sort </button>
+</form>
+</div>
+
 		<div class="row">
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		       	 <div class="panel panel-default mypanel-left">
+		       	 <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
+		                </a><small>Nr. camere: 3</small><br>
+		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 130 m<sup>2</sup></small><br>
+		            
+		            </div>
+		            <div class="panel-body in img" style="background: url(static/images/MostPopular/1.jpg);"></div>
+		         </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading ">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bethoven studio.</h4>
+		                </a><small>Nr. camere: 1</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 80 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(static/images/MostPopular/2.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bach apartment.</h4>
+		                </a><small>Nr. camere: 4</small><br>
+		                	<small>Pret: 250.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 150 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(static/images/MostPopular/4.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Chopin apartment.</h4>
+		                </a><small>Nr. camere: 2</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 100 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(static/images/MostPopular/3.jpg);"></div>
+		        </div>
+		    </div>
+	</div>
+	
+		<div class="row">
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		       	 <div class="panel panel-default" id = "mypanel-left">
 		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
 		                </a><small>Nr. camere: 3</small><br>
 		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
@@ -159,7 +259,7 @@
 		         </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-right">
+		        <div class="panel panel-default" id = "mypanel-right">
 		            <div class="panel-heading ">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bethoven studio.</h4>
@@ -171,7 +271,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-left">
+		        <div class="panel panel-default" id = "mypanel-left">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Bach apartment.</h4>
@@ -183,7 +283,7 @@
 		        </div>
 		    </div>
 		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-		        <div class="panel panel-default mypanel-right">
+		        <div class="panel panel-default" id = "mypanel-right">
 		            <div class="panel-heading">
 		                <a data-toggle="collapse" href="#">
 		                    <h4> Chopin apartment.</h4>
@@ -195,41 +295,76 @@
 		        </div>
 		    </div>
 	</div>
+		<div class="row">
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		       	 <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading"> <a data-toggle="collapse" href="#"> <h4> Mozart apartment.</h4>
+		                </a><small>Nr. camere: 3</small><br>
+		                	<small>Pret: 200.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 130 m<sup>2</sup></small><br>
+		            
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/1.jpg);"></div>
+		         </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading ">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bethoven studio.</h4>
+		                </a><small>Nr. camere: 1</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 80 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/2.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-left">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Bach apartment.</h4>
+		                </a><small>Nr. camere: 4</small><br>
+		                	<small>Pret: 250.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 150 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/4.jpg);"></div>
+		        </div>
+		    </div>
+		    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+		        <div class="panel panel-default" id = "mypanel-right">
+		            <div class="panel-heading">
+		                <a data-toggle="collapse" href="#">
+		                    <h4> Chopin apartment.</h4>
+		                </a><small>Nr. camere: 2</small><br>
+		                	<small>Pret: 150.000 <div class="glyphicon glyphicon-euro"></div></small><br>
+		                	<small>Suprafata: 100 m<sup>2</sup></small>
+		            </div>
+		            <div class="panel-body in img" style="background: url(images/MostPopular/3.jpg);"></div>
+		        </div>
+		    </div>
+	</div>
+	
+	
+		<div class="container1" align=center >
+<ul class="pagination">
+              <li class="disabled"><a href="#">«</a></li>
+              <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">»</a></li>
+            </ul>
+</div>
+	
 </div> 
 	
-		<div class="container switch-container">
-		<div class="row">
-			<div class="col-md-2 col-sm-2 col-xs-4">	
-				<h5>Noise pollution</h5>
-		        <div class="switch">
-		        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-		        <label for="cmn-toggle-1"></label>
-		        </div>
-		    </div>
-		    <div class="col-md-2 col-sm-2 col-xs-4">	
-		        <h5>Waste pollution</h5>
-		        <div class="switch">
-		        <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-		        <label for="cmn-toggle-2"></label>
-		        </div>
-		    </div>
-		    <div class="col-md-2 col-sm-2 col-xs-4">	
-		        <h5>Waste pollution</h5>
-		        <div class="switch">
-		        <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
-		        <label for="cmn-toggle-3"></label>
-		        </div>
-		    </div>
-		</div>
-		</div>
-
-		<div class="map-container">
-        <div id="map"></div>
-        </div>
+	
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZksBYKq4HH8pLQoPjoTDBtSJr_-40FWI"></script>
-        <script src="js/custom.js"></script>
+        <script src="static/js/custom.js"></script>
     </body>
 </html>
