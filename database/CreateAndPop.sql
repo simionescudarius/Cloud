@@ -5,7 +5,7 @@ drop table announcements;
 drop table meetings;
 drop table users;
 drop table realEstates;
-drop table realEstates_types;
+drop table realEstate_types;
 drop table zone;
 /
 
@@ -99,7 +99,7 @@ CREATE TABLE users
     email        VARCHAR2 (100) ,
     phone_number NUMBER (10,0) NOT NULL
   ) ;
-ALTER TABLE users ADD CONSTRAINT Client_PK PRIMARY KEY ( user_id ) ;
+ALTER TABLE users ADD CONSTRAINT users_PK PRIMARY KEY ( user_id ) ;
 
 CREATE TABLE realEstates
   (
@@ -115,7 +115,7 @@ CREATE TABLE realEstates
     photo_4 BLOB ,
     photo_5 BLOB
   ) ;
-ALTER TABLE realEstates ADD CONSTRAINT Immobile_PK PRIMARY KEY ( realEstate_id ) ;
+ALTER TABLE realEstates ADD CONSTRAINT realEstates_PK PRIMARY KEY ( realEstate_id ) ;
 
 CREATE TABLE Zone
   (
@@ -127,15 +127,14 @@ CREATE TABLE Zone
     noise_pollution  NUMBER(1,0) NOT NULL ,
     chimic_pollution NUMBER(1,0) NOT NULL ,
     waste_pollution  NUMBER(1,0) NOT NULL ,
-    facility_1         NUMBER(1,0)  ,
-    facility_2         NUMBER(1,0)  ,
-    facility_3         NUMBER(1,0)  ,
-    facility_4         NUMBER(1,0)  ,
-    facility_5         NUMBER(1,0)  ,
-    facility_6         NUMBER(1,0)  ,
-    minus_1            NUMBER(1,0)  ,
-    minus_2            NUMBER(1,0)  ,
-    minus_3            NUMBER(1,0) 
+	shops_nearby NUMBER(1,0), 
+	entertainment_nearby NUMBER(1,0), 
+	bars_nearby NUMBER(1,0), 
+	publictransport_nearby NUMBER(1,0), 
+	restaurants_nearby NUMBER(1,0), 
+	great_view NUMBER(1,0), 
+	parking NUMBER(1,0), 
+	hard_reachable NUMBER(1,0)
   ) ;
 ALTER TABLE Zone ADD CONSTRAINT Zone_PK PRIMARY KEY ( zone_id ) ;
 
@@ -148,12 +147,12 @@ CREATE TABLE meetings
 ALTER TABLE meetings ADD CONSTRAINT meetings_PK PRIMARY KEY ( meeting_id ) ;
 
 
-CREATE TABLE realEstates_types
+CREATE TABLE realEstate_types
   (
     type_id INTEGER NOT NULL ,
     name    VARCHAR2 (30) NOT NULL
   ) ;
-ALTER TABLE realEstates_types ADD CONSTRAINT immobile_type_PK PRIMARY KEY ( type_id ) ;
+ALTER TABLE realEstate_types ADD CONSTRAINT immobile_type_PK PRIMARY KEY ( type_id ) ;
 
 -- create FK
 
@@ -167,9 +166,9 @@ ALTER TABLE announcements ADD CONSTRAINT user_id FOREIGN KEY ( user_id ) REFEREN
 
 ALTER TABLE announcements ADD CONSTRAINT realEstate_id FOREIGN KEY ( realEstate_id ) REFERENCES realEstates ( realEstate_id ) ;
 
-ALTER TABLE realEstates ADD CONSTRAINT type_id FOREIGN KEY ( type_id ) REFERENCES realEstates_types ( type_id ) ;
+ALTER TABLE realEstates ADD CONSTRAINT type_id FOREIGN KEY ( type_id ) REFERENCES realEstate_types ( type_id ) ;
 
--- Insert data
+-- Insert data | Only for PSGBD project
 
 declare
 cursor lista_studenti is select id,name from users1 where id is not null ;
@@ -236,11 +235,11 @@ insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution,
  
 --realEstates_types
 /
- insert into realEstates_types values (1, 'teren');
- insert into realEstates_types values (2, 'casa');
- insert into realEstates_types values (3, 'garsoniera');
- insert into realEstates_types values (4, 'apartament');
- insert into realEstates_types values (5, 'spatiu comercial');
+ insert into realEstate_types values (1, 'teren');
+ insert into realEstate_types values (2, 'casa');
+ insert into realEstate_types values (3, 'garsoniera');
+ insert into realEstate_types values (4, 'apartament');
+ insert into realEstate_types values (5, 'spatiu comercial');
 
 
  --realEstates
@@ -254,7 +253,7 @@ insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution,
  insert into realEstates (realEstate_id, type_id, zone_id, area, room_number)
  values(
     id, 
-    (select type_id from ( select * from realEstates_types order by dbms_random.random) where rownum < 2),
+    (select type_id from ( select * from realEstate_types order by dbms_random.random) where rownum < 2),
     (select zone_id from ( select * from zone order by dbms_random.random) where rownum < 2),
     dbms_random.value(20, 90),
     dbms_random.value(0,4)
