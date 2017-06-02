@@ -7,7 +7,14 @@ drop table users;
 drop table realEstates;
 drop table realEstate_types;
 drop table zone;
+drop table logs;
 /
+
+--Log table
+create table logs(
+  time timestamp,
+  action varchar(400)
+);
 
 --Table for import users_data
   CREATE TABLE "USERS1" 
@@ -97,7 +104,7 @@ CREATE TABLE users
     first_name   VARCHAR2 (50) NOT NULL,
     last_name    VARCHAR2 (50)  NOT NULL,
     email        VARCHAR2 (100) ,
-    phone_number NUMBER (10,0) NOT NULL
+    phone_number VARCHAR2 (10) NOT NULL
   ) ;
 ALTER TABLE users ADD CONSTRAINT users_PK PRIMARY KEY ( user_id ) ;
 
@@ -193,44 +200,44 @@ end;
 --Zone
 /
 insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (1, 'Bucium', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (1, 'Bucium', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
  
  insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (2, 'Podu Ros', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (2, 'Podu Ros', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
  
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (3, 'Mircea cel Batran', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (3, 'Mircea cel Batran', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
  
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (4, 'Pallas', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (4, 'Pallas', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
   
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (5, 'Podu de Piatra', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (5, 'Podu de Piatra', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
   
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (6, 'Tatarasi', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (6, 'Tatarasi', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
   
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (7, 'Tudor', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (7, 'Tudor', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
   
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (8, 'Piata Unirii', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (8, 'Piata Unirii', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
   
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (9, 'Pacurari', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (9, 'Pacurari', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
 
   insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution, chimic_pollution, waste_pollution)
- values (10, 'Dacia', dbms_random.value(100000, 999999), dbms_random.value(-999.999999, 999.999999), 
- dbms_random.value(-999.999999, 999.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
+ values (10, 'Dacia', dbms_random.value(100000, 999999), dbms_random.value(-89.999999, 89.999999), 
+ dbms_random.value(-179.999999, 179.999999), dbms_random.value(0,9), dbms_random.value(0,9), dbms_random.value(0,9));
  
  
 --realEstates_types
@@ -255,7 +262,7 @@ insert into zone(zone_id, name, post_code, latitude, longitude, noise_pollution,
     id, 
     (select type_id from ( select * from realEstate_types order by dbms_random.random) where rownum < 2),
     (select zone_id from ( select * from zone order by dbms_random.random) where rownum < 2),
-    dbms_random.value(20, 90),
+    dbms_random.value(20, 89),
     dbms_random.value(0,4)
    );
    id := id + 1;

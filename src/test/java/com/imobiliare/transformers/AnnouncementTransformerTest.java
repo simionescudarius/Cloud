@@ -1,6 +1,8 @@
-package com.imobiliare.services;
+package com.imobiliare.transformers;
 
 import static org.junit.Assert.*;
+
+import java.sql.Date;
 
 import javax.transaction.Transactional;
 
@@ -12,31 +14,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.imobiliare.ImobiliareApplication;
-import com.imobiliare.models.User;
-import com.imobiliare.repositories.UserRepository;
+import com.imobiliare.models.Announcement;
+import com.imobiliare.services.AnnouncementService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ImobiliareApplication.class)
 @Transactional
-public class UserRepositoryTest {
-
+public class AnnouncementTransformerTest {
 	@Autowired
-	UserRepository userRepository;
+	AnnouncementService announcementService;
+	
+	AnnouncementTransformer announcementTransformer;
+	Announcement announcement;
 	
 	@Before
 	public void setUp() throws Exception {
+		announcement = new Announcement();
+		announcement.setExpireDate(Date.valueOf("2017-05-31"));
 	}
 
 	@Test
-	public void findOneTest() {
-		User user = userRepository.findOne((long) 234);
-		assertTrue(user != null);
+	public void getByIdTest() {
+		assertTrue(announcement != null);
 	}
 
-	@Test
-	public void updateFirstNameTest(){
-		userRepository.updateFirstName(234, "upTest");
-		User user = userRepository.findOne(234L);
-		assertTrue(user.getFirstName().equals("upTest"));
-	}
 }

@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "users")
+@Entity
 @Table(name = "users")
 public class User {
 	@Id
@@ -29,7 +29,7 @@ public class User {
 
 	@NotNull
 	@Column(name = "email")
-	private String emal;
+	private String email;
 
 	@NotNull
 	@Column(name = "phone_number")
@@ -53,10 +53,6 @@ public class User {
 		return lastName;
 	}
 
-	public String getEmal() {
-		return emal;
-	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -73,11 +69,32 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public void setEmal(String emal) {
-		this.emal = emal;
-	}
-
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Announcement> getAnnouncements() {
+		return announcements;
+	}
+
+	public List<Meeting> getMeetings() {
+		return meetings;
+	}
+
+	public void setAnnouncements(List<Announcement> announcements) {
+		this.announcements = announcements;
+	}
+
+	public void setMeetings(List<Meeting> meetings) {
+		this.meetings = meetings;
+	}
+
 }
