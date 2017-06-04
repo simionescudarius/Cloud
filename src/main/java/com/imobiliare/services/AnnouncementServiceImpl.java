@@ -36,4 +36,9 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		announcementRepository.delete(id);
 	}
 
+	@Override
+	public List<Announcement> getByRealEstateType(String type) {
+		return announcementRepository.getByRealEstateType(type);
+	}
+
 }

@@ -12,14 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "announcements")
+@Entity
 @Table(name = "announcements")
 public class Announcement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "announcement_id")
 	private long id;
-	
+
 	@NotNull
 	@Column(name = "user_id")
 	private Long ownerId;
@@ -27,28 +27,33 @@ public class Announcement {
 	@ManyToOne
 	@JoinColumn(name = "user_id", insertable = false, updatable = false)
 	private User owner;
-	
+
 	@NotNull
 	@Column(name = "realestate_id")
 	private Long realEstateId;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "realestate_id", insertable = false, updatable = false)
 	private RealEstate realEstate;
-	
+
 	@NotNull
 	@Column(name = "post_date")
 	private Date postDate;
-	
+
 	@Column(name = "expire_date")
 	private Date expireDate;
-	
-	@Column(name = "view_number")
-	private Long viewNumber;
 
-	public Announcement(){
+	@NotNull
+	@Column(name = "view_number")
+	private long viewNumber;
+
+	@NotNull
+	@Column(name = "price")
+	private int price;
+
+	public Announcement() {
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -69,7 +74,7 @@ public class Announcement {
 		return expireDate;
 	}
 
-	public Long getViewNumber() {
+	public long getViewNumber() {
 		return viewNumber;
 	}
 
@@ -80,7 +85,7 @@ public class Announcement {
 	public Long getRealEstateId() {
 		return realEstateId;
 	}
-	
+
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -101,7 +106,7 @@ public class Announcement {
 		this.expireDate = expireDate;
 	}
 
-	public void setViewNumber(Long viewNumber) {
+	public void setViewNumber(long viewNumber) {
 		this.viewNumber = viewNumber;
 	}
 
@@ -112,13 +117,58 @@ public class Announcement {
 	public void setRealEstateId(Long realEstateId) {
 		this.realEstateId = realEstateId;
 	}
-	
-	public Announcement(Long ownerId, Long realEstateId, Date postDate,
-			Date expireDate, Long viewNumber) {
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	private Announcement(Long ownerId, Long realEstateId, Date postDate, Date expireDate, long viewNumber, int price) {
 		this.ownerId = ownerId;
 		this.realEstateId = realEstateId;
 		this.postDate = postDate;
 		this.expireDate = expireDate;
 		this.viewNumber = viewNumber;
+		this.price = price;
+	}
+
+	public static class AnnouncementBuilder {
+		private Long ownerId;
+		private Long realEstateId;
+		private Date postDate;
+		private Date expireDate;
+		private long viewNumber = 0l;
+		private int price;
+
+		public AnnouncementBuilder() {
+		}
+
+		public AnnouncementBuilder ownerId(Long ownerId) {
+			this.ownerId = ownerId;
+			return this;
+		}
+
+		public AnnouncementBuilder realEstateId(Long realEstateId) {
+			this.realEstateId = realEstateId;
+			return this;
+		}
+
+		public AnnouncementBuilder postDate(Date postDate) {
+			this.postDate = postDate;
+			return this;
+		}
+
+		public AnnouncementBuilder expireDate(Date expireDate) {
+			this.expireDate = expireDate;
+			return this;
+		}
+
+		public Announcement create() {
+			return new Announcement(ownerId, realEstateId, postDate, expireDate, viewNumber, price);
+		}
+
 	}
 }

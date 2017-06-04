@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "zone")
+@Entity
 @Table(name = "zone")
 public class Zone {
 	@Id
@@ -16,6 +16,7 @@ public class Zone {
 	@Column(name = "zone_id")
 	private long id;
 
+	@NotNull
 	@Column(name = "post_code")
 	private Integer postalCode;
 
@@ -39,26 +40,33 @@ public class Zone {
 	@Column(name = "CHIMIC_POLLUTION")
 	private byte chimicPollution;
 
+	@NotNull
 	@Column(name = "SHOPS_NEARBY")
-	private Byte shopsNearby;
+	private byte shopsNearby;
 
+	@NotNull
 	@Column(name = "ENTERTAINMENT_NEARBY")
-	private Byte entertainmentNearby;
+	private byte entertainmentNearby;
 
+	@NotNull
 	@Column(name = "BARS_NEARBY")
-	private Byte barsNearby;
+	private byte barsNearby;
 
+	@NotNull
 	@Column(name = "PUBLICTRANSPORT_NEARBY")
-	private Byte publicTransportNearby;
+	private byte publicTransportNearby;
 
+	@NotNull
 	@Column(name = "GREAT_VIEW")
-	private Byte greatView;
+	private byte greatView;
 
+	@NotNull
 	@Column(name = "PARKING")
-	private Byte parking;
+	private byte parking;
 
+	@NotNull
 	@Column(name = "HARD_REACHABLE")
-	private Byte hardReachable;
+	private byte hardReachable;
 
 	public Zone() {
 	}
@@ -91,31 +99,31 @@ public class Zone {
 		return chimicPollution;
 	}
 
-	public Byte getShopsNearby() {
+	public byte getShopsNearby() {
 		return shopsNearby;
 	}
 
-	public Byte getEntertainmentNearby() {
+	public byte getEntertainmentNearby() {
 		return entertainmentNearby;
 	}
 
-	public Byte getBarsNearby() {
+	public byte getBarsNearby() {
 		return barsNearby;
 	}
 
-	public Byte getPublicTransportNearby() {
+	public byte getPublicTransportNearby() {
 		return publicTransportNearby;
 	}
 
-	public Byte getGreatView() {
+	public byte getGreatView() {
 		return greatView;
 	}
 
-	public Byte getParking() {
+	public byte getParking() {
 		return parking;
 	}
 
-	public Byte getHardReachable() {
+	public byte getHardReachable() {
 		return hardReachable;
 	}
 
@@ -123,7 +131,7 @@ public class Zone {
 		this.id = id;
 	}
 
-	public void setPostalCode(Integer postalCode) {
+	public void setPostalCode(int postalCode) {
 		this.postalCode = postalCode;
 	}
 
@@ -147,37 +155,37 @@ public class Zone {
 		this.chimicPollution = chimicPollution;
 	}
 
-	public void setShopsNearby(Byte shopsNearby) {
+	public void setShopsNearby(byte shopsNearby) {
 		this.shopsNearby = shopsNearby;
 	}
 
-	public void setEntertainmentNearby(Byte entertainmentNearby) {
+	public void setEntertainmentNearby(byte entertainmentNearby) {
 		this.entertainmentNearby = entertainmentNearby;
 	}
 
-	public void setBarsNearby(Byte barsNearby) {
+	public void setBarsNearby(byte barsNearby) {
 		this.barsNearby = barsNearby;
 	}
 
-	public void setPublicTransportNearby(Byte publicTransportNearby) {
+	public void setPublicTransportNearby(byte publicTransportNearby) {
 		this.publicTransportNearby = publicTransportNearby;
 	}
 
-	public void setGreatView(Byte greatView) {
+	public void setGreatView(byte greatView) {
 		this.greatView = greatView;
 	}
 
-	public void setParking(Byte parking) {
+	public void setParking(byte parking) {
 		this.parking = parking;
 	}
 
-	public void setHardReachable(Byte hardReachable) {
+	public void setHardReachable(byte hardReachable) {
 		this.hardReachable = hardReachable;
 	}
 
-	private Zone(Integer postalCode, double latitude, double longitude, byte wastePollution,
-			byte noisePollution, byte chimicPollution, Byte shopsNearby, Byte entertainmentNearby, Byte barsNearby,
-			Byte publicTransportNearby, Byte greatView, Byte parking, Byte hardReachable) {
+	private Zone(Integer postalCode, double latitude, double longitude, byte wastePollution, byte noisePollution,
+			byte chimicPollution, byte shopsNearby, byte entertainmentNearby, byte barsNearby,
+			byte publicTransportNearby, byte greatView, byte parking, byte hardReachable) {
 		this.postalCode = postalCode;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -200,107 +208,113 @@ public class Zone {
 		private byte wastePollution;
 		private byte noisePollution;
 		private byte chimicPollution;
-		private Byte shopsNearby;
-		private Byte entertainmentNearby;
-		private Byte barsNearby;
-		private Byte publicTransportNearby;
-		private Byte greatView;
-		private Byte parking;
-		private Byte hardReachable;
+		private byte shopsNearby;
+		private byte entertainmentNearby;
+		private byte barsNearby;
+		private byte publicTransportNearby;
+		private byte greatView;
+		private byte parking;
+		private byte hardReachable;
 
 		public ZoneBuilder() {
 		}
 
 		public ZoneBuilder postalCode(Integer postalCode) {
+			validateNullData(postalCode);
 			this.postalCode = postalCode;
 			return this;
 		}
 
 		public ZoneBuilder latitude(Double latitude) {
+			validateNullData(latitude);
 			this.latitude = latitude;
 			return this;
 		}
 
 		public ZoneBuilder longitude(Double longitude) {
+			validateNullData(longitude);
 			this.longitude = longitude;
 			return this;
 		}
 
-		public ZoneBuilder wastePollution(byte wastePollution) {
+		public ZoneBuilder wastePollution(Byte wastePollution) {
+			validateNullData(wastePollution);
 			this.wastePollution = wastePollution;
 			return this;
 		}
 
-		public ZoneBuilder noisePollution(byte noisePollution) {
+		public ZoneBuilder noisePollution(Byte noisePollution) {
+			validateNullData(noisePollution);
 			this.noisePollution = noisePollution;
 			return this;
 		}
 
-		public ZoneBuilder chimicPollution(byte chimicPollution) {
+		public ZoneBuilder chimicPollution(Byte chimicPollution) {
+			validateNullData(chimicPollution);
 			this.chimicPollution = chimicPollution;
 			return this;
 		}
 
-		public ZoneBuilder shopsNearby(boolean shopsNearby) {
-			if (shopsNearby == true) {
-				this.shopsNearby = 1;
+		public ZoneBuilder shopsNearby(Boolean shopsNearby) {
+			if (shopsNearby == null || shopsNearby == false) {
+				this.shopsNearby = 0;
 				return this;
 			}
-			this.shopsNearby = 0;
+			this.shopsNearby = 1;
 			return this;
 		}
 
-		public ZoneBuilder entertainmentNearby(boolean entertainmentNearby) {
-			if (entertainmentNearby == true) {
-				this.entertainmentNearby = 1;
+		public ZoneBuilder entertainmentNearby(Boolean entertainmentNearby) {
+			if (entertainmentNearby == null || entertainmentNearby == false) {
+				this.entertainmentNearby = 0;
 				return this;
 			}
-			this.entertainmentNearby = 0;
+			this.entertainmentNearby = 1;
 			return this;
 		}
 
-		public ZoneBuilder barsNearby(boolean barsNearby) {
-			if (barsNearby == true) {
-				this.barsNearby = 1;
+		public ZoneBuilder barsNearby(Boolean barsNearby) {
+			if (barsNearby == null || barsNearby == false) {
+				this.barsNearby = 0;
 				return this;
 			}
-			this.barsNearby = 0;
+			this.barsNearby = 1;
 			return this;
 		}
 
-		public ZoneBuilder publicTransportNearby(boolean publicTransportNearby) {
-			if (publicTransportNearby == true) {
-				this.publicTransportNearby = 1;
+		public ZoneBuilder publicTransportNearby(Boolean publicTransportNearby) {
+			if (publicTransportNearby == null || publicTransportNearby == false) {
+				this.publicTransportNearby = 0;
 				return this;
 			}
-			this.publicTransportNearby = 0;
+			this.publicTransportNearby = 1;
 			return this;
 		}
 
-		public ZoneBuilder parking(boolean parking) {
-			if (parking == true) {
-				this.parking = 1;
+		public ZoneBuilder parking(Boolean parking) {
+			if (parking == null || parking == false) {
+				this.parking = 0;
 				return this;
 			}
-			this.parking = 0;
+			this.parking = 1;
 			return this;
 		}
 
-		public ZoneBuilder greatView(boolean greatView) {
-			if (greatView == true) {
-				this.greatView = 1;
+		public ZoneBuilder greatView(Boolean greatView) {
+			if (greatView == null || greatView == false) {
+				this.greatView = 0;
 				return this;
 			}
-			this.greatView = 0;
+			this.greatView = 1;
 			return this;
 		}
 
-		public ZoneBuilder hardReachable(boolean hardReachable) {
-			if (hardReachable == true) {
-				this.hardReachable = 1;
+		public ZoneBuilder hardReachable(Boolean hardReachable) {
+			if (hardReachable == null || hardReachable == false) {
+				this.hardReachable = 0;
 				return this;
 			}
-			this.hardReachable = 0;
+			this.hardReachable = 1;
 			return this;
 		}
 
@@ -308,6 +322,12 @@ public class Zone {
 			return new Zone(postalCode, latitude, longitude, wastePollution, noisePollution, chimicPollution,
 					shopsNearby, entertainmentNearby, barsNearby, publicTransportNearby, greatView, parking,
 					hardReachable);
+		}
+
+		private void validateNullData(Object object) {
+			if (object == null) {
+				throw new IllegalArgumentException("Data is null !");
+			}
 		}
 	}
 

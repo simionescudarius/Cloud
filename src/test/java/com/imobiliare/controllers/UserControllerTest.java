@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.validation.BeanPropertyBindingResult;
 
 import com.imobiliare.ImobiliareApplication;
 import com.imobiliare.DTOs.UserDTO;
@@ -25,20 +26,20 @@ public class UserControllerTest {
 	UserController userController;
 
 	@Test
-	public void whenRequestGetAllShouldReturnOkAndUserDTOList() {
-		UserDTO userDto = new UserDTO.UserDTOBuilder().email("email1@").firstName("testUser").lastName("testUser")
-				.phoneNumber("phone").create();
-		userController.save(userDto);
+	public void whenRequestGetAllShouldReturnOkAndUserDTOList() throws InstantiationException, IllegalAccessException {
+		UserDTO userDto = new UserDTO.UserDTOBuilder().email("email1@gmail.com").firstName("testUser").lastName("testUser")
+				.phoneNumber("1233211231").create();
+		userController.save(userDto, new BeanPropertyBindingResult(userDto, "UserDTO"));
 		ResponseEntity<List<UserDTO>> response = userController.getAll();
 		assertTrue(response != null);
 	}
 
 	@SuppressWarnings("rawtypes")
 	@Test
-	public void saveUserThenExpectHttpStatusToBeCreated() {
-		UserDTO userDto = new UserDTO.UserDTOBuilder().email("email1@").firstName("testUser").lastName("testUser")
-				.phoneNumber("phone").create();
-		ResponseEntity responseEntity = userController.save(userDto);
+	public void saveUserThenExpectHttpStatusToBeCreated() throws InstantiationException, IllegalAccessException {
+		UserDTO userDto = new UserDTO.UserDTOBuilder().email("email1@gmail.com").firstName("testUser").lastName("testUser")
+				.phoneNumber("1233211231").create();
+		ResponseEntity responseEntity = userController.save(userDto, new BeanPropertyBindingResult(userDto, "UserDTO"));
 		ResponseEntity acResponseEntity = new ResponseEntity(HttpStatus.CREATED);
 		assertEquals(responseEntity, acResponseEntity);
 	}

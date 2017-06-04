@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name="realestate_types")
+@Entity
 @Table(name="realestate_types")
 public class RealEstateType {
 	@Id

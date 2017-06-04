@@ -77,8 +77,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private void validateEmail(String email){
-		if (!email.matches("[a-zA-Z]+@[a-zA-Z]+.[a-zA-Z]+")) {
-			throw new IllegalArgumentException("Invalid phone number !");
+		if (!email.matches("[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]+")) {
+			throw new IllegalArgumentException("Invalid email !");
 		}
 	}
 

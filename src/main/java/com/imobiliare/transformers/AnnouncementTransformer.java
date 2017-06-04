@@ -14,9 +14,9 @@ public class AnnouncementTransformer implements Transformer<Announcement, Announ
 	@Override
 	public AnnouncementDTO toDTO(Announcement object) {
 		return new AnnouncementDTO.AnnouncementDTOBuilder().expireDate(object.getExpireDate()).id(object.getId())
-				.owner(new UserTransformer().toDTO(object.getOwner())).postDate(object.getPostDate())
+				.owner(new UserTransformer().toDTOforAnnouncement(object.getOwner())).postDate(object.getPostDate())
 				.realEstate(new RealEstateTransformer().toDTO(object.getRealEstate()))
-				.viewNumber(object.getViewNumber()).create();
+				.viewNumber(object.getViewNumber()).price(object.getPrice()).create();
 	}
 
 	public List<AnnouncementDTO> toDTOList(List<Announcement> list) {
@@ -29,8 +29,9 @@ public class AnnouncementTransformer implements Transformer<Announcement, Announ
 
 	@Override
 	public Announcement toModel(AnnouncementDTO object) {
-		return new Announcement(object.getOwner().getId(), object.getRealEstate().getId(), object.getPostDate(),
-				object.getPostDate(), object.getViewNumber());
+		return new Announcement.AnnouncementBuilder().expireDate(object.getExpireDate())
+				.ownerId(object.getOwner().getId()).postDate(object.getPostDate())
+				.realEstateId(object.getRealEstate().getId()).create();
 	}
 
 }

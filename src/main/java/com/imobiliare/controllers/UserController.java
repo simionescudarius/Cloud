@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import com.imobiliare.enums.UserUpdateEnum;
 import com.imobiliare.models.User;
 import com.imobiliare.services.UserService;
 import com.imobiliare.transformers.UserTransformer;
+import com.imobiliare.validators.UserValidator;
 
 @CrossOrigin
 @RestController
@@ -28,6 +30,9 @@ public class UserController extends Controller {
 
 	@Autowired
 	UserTransformer userTransformer;
+
+	@Autowired
+	UserValidator userValidator;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> getAll() {
@@ -54,7 +59,7 @@ public class UserController extends Controller {
 		UserDTO userDTO = userTransformer.toDTO(user);
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/email={email}/")
 	public ResponseEntity<UserDTO> getByEmail(@PathVariable("email") String email) {
 		User user;
@@ -72,12 +77,12 @@ public class UserController extends Controller {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDto) {
-		try {
-			userService.save(userTransformer.toModel(userDto));
-		} catch (IllegalArgumentException exception) {
+	public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDto, BindingResult validationResult) {
+		userValidator.validate(userDto, validationResult);
+		if (validationResult.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
+		userService.save(userTransformer.toModel(userDto));
 		return new ResponseEntity<UserDTO>(HttpStatus.CREATED);
 	}
 

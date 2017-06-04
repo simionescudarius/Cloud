@@ -2,19 +2,19 @@ package com.imobiliare.DTOs;
 
 public class ZoneDTO {
 	private long id;
-	private int postalCode;
-	private double latitude;
-	private double longitude;
-	private byte wastePollution;
-	private byte noisePollution;
-	private byte chimicPollution;
-	private boolean shopsNearby;
-	private boolean entertainmentNearby;
-	private boolean barsNearby;
-	private boolean publicTransportNearby;
-	private boolean greatView;
-	private boolean parking;
-	private boolean hardReachable;
+	private Integer postalCode;
+	private Double latitude;
+	private Double longitude;
+	private Byte wastePollution;
+	private Byte noisePollution;
+	private Byte chimicPollution;
+	private Boolean shopsNearby;
+	private Boolean entertainmentNearby;
+	private Boolean barsNearby;
+	private Boolean publicTransportNearby;
+	private Boolean greatView;
+	private Boolean parking;
+	private Boolean hardReachable;
 
 	public ZoneDTO (){
 	}
@@ -23,59 +23,59 @@ public class ZoneDTO {
 		return id;
 	}
 
-	public int getPostalCode() {
+	public Integer getPostalCode() {
 		return postalCode;
 	}
 
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public byte getWastePollution() {
+	public Byte getWastePollution() {
 		return wastePollution;
 	}
 
-	public void setWastePollution(byte wastePollution) {
+	public void setWastePollution(Byte wastePollution) {
 		this.wastePollution = wastePollution;
 	}
 
-	public byte getNoisePollution() {
+	public Byte getNoisePollution() {
 		return noisePollution;
 	}
 
-	public byte getChimicPollution() {
+	public Byte getChimicPollution() {
 		return chimicPollution;
 	}
 
-	public boolean isShopsNearby() {
+	public Boolean isShopsNearby() {
 		return shopsNearby;
 	}
 
-	public boolean isEntertainmentNearby() {
+	public Boolean isEntertainmentNearby() {
 		return entertainmentNearby;
 	}
 
-	public boolean isBarsNearby() {
+	public Boolean isBarsNearby() {
 		return barsNearby;
 	}
 
-	public boolean isPublicTransportNearby() {
+	public Boolean isPublicTransportNearby() {
 		return publicTransportNearby;
 	}
 
-	public boolean isGreatView() {
+	public Boolean isGreatView() {
 		return greatView;
 	}
 
-	public boolean isParking() {
+	public Boolean isParking() {
 		return parking;
 	}
 
-	public boolean isHardReachable() {
+	public Boolean isHardReachable() {
 		return hardReachable;
 	}
 
@@ -83,58 +83,58 @@ public class ZoneDTO {
 		this.id = id;
 	}
 
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(Integer postalCode) {
 		this.postalCode = postalCode;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
-	public void setNoisePollution(byte noisePollution) {
+	public void setNoisePollution(Byte noisePollution) {
 		this.noisePollution = noisePollution;
 	}
 
-	public void setChimicPollution(byte chimicPollution) {
+	public void setChimicPollution(Byte chimicPollution) {
 		this.chimicPollution = chimicPollution;
 	}
 
-	public void setShopsNearby(boolean shopsNearby) {
+	public void setShopsNearby(Boolean shopsNearby) {
 		this.shopsNearby = shopsNearby;
 	}
 
-	public void setEntertainmentNearby(boolean entertainmentNearby) {
+	public void setEntertainmentNearby(Boolean entertainmentNearby) {
 		this.entertainmentNearby = entertainmentNearby;
 	}
 
-	public void setBarsNearby(boolean barsNearby) {
+	public void setBarsNearby(Boolean barsNearby) {
 		this.barsNearby = barsNearby;
 	}
 
-	public void setPublicTransportNearby(boolean publicTransportNearby) {
+	public void setPublicTransportNearby(Boolean publicTransportNearby) {
 		this.publicTransportNearby = publicTransportNearby;
 	}
 
-	public void setGreatView(boolean greatView) {
+	public void setGreatView(Boolean greatView) {
 		this.greatView = greatView;
 	}
 
-	public void setParking(boolean parking) {
+	public void setParking(Boolean parking) {
 		this.parking = parking;
 	}
 
-	public void setHardReachable(boolean hardReachable) {
+	public void setHardReachable(Boolean hardReachable) {
 		this.hardReachable = hardReachable;
 	}
 	
-	private ZoneDTO(long id, int postalCode, double latitude, double longitude, byte wastePollution,
-			byte noisePollution, byte chimicPollution, boolean shopsNearby, boolean entertainmentNearby,
-			boolean barsNearby, boolean publicTransportNearby, boolean greatView, boolean parking,
-			boolean hardReachable) {
+	private ZoneDTO(long id, Integer postalCode, Double latitude, Double longitude, Byte wastePollution,
+			Byte noisePollution, Byte chimicPollution, Boolean shopsNearby, Boolean entertainmentNearby,
+			Boolean barsNearby, Boolean publicTransportNearby, Boolean greatView, Boolean parking,
+			Boolean hardReachable) {
 		this.id = id;
 		this.postalCode = postalCode;
 		this.latitude = latitude;
@@ -153,19 +153,19 @@ public class ZoneDTO {
 
 	public static class ZoneBuilder {
 		private long id;
-		private int postalCode;
-		private double latitude;
-		private double longitude;
-		private byte wastePollution;
-		private byte noisePollution;
-		private byte chimicPollution;
-		private boolean shopsNearby;
-		private boolean entertainmentNearby;
-		private boolean barsNearby;
-		private boolean publicTransportNearby;
-		private boolean greatView;
-		private boolean parking;
-		private boolean hardReachable;
+		private Integer postalCode;
+		private Double latitude;
+		private Double longitude;
+		private Byte wastePollution;
+		private Byte noisePollution;
+		private Byte chimicPollution;
+		private Boolean shopsNearby;
+		private Boolean entertainmentNearby;
+		private Boolean barsNearby;
+		private Boolean publicTransportNearby;
+		private Boolean greatView;
+		private Boolean parking;
+		private Boolean hardReachable;
 
 		public ZoneBuilder() {
 		}
@@ -175,67 +175,67 @@ public class ZoneDTO {
 			return this;
 		}
 
-		public ZoneBuilder postalCode(int postalCode) {
+		public ZoneBuilder postalCode(Integer postalCode) {
 			this.postalCode = postalCode;
 			return this;
 		}
 
-		public ZoneBuilder latitude(double latitude) {
+		public ZoneBuilder latitude(Double latitude) {
 			this.latitude = latitude;
 			return this;
 		}
 
-		public ZoneBuilder longitude(double longitude) {
+		public ZoneBuilder longitude(Double longitude) {
 			this.longitude = longitude;
 			return this;
 		}
 
-		public ZoneBuilder wastePollution(byte wastePollution) {
+		public ZoneBuilder wastePollution(Byte wastePollution) {
 			this.wastePollution = wastePollution;
 			return this;
 		}
 
-		public ZoneBuilder noisePollution(byte noisePollution) {
+		public ZoneBuilder noisePollution(Byte noisePollution) {
 			this.noisePollution = noisePollution;
 			return this;
 		}
 
-		public ZoneBuilder chimicPollution(byte chimicPollution) {
+		public ZoneBuilder chimicPollution(Byte chimicPollution) {
 			this.wastePollution = chimicPollution;
 			return this;
 		}
 
-		public ZoneBuilder shopsNearby(boolean shopsNearby) {
+		public ZoneBuilder shopsNearby(Boolean shopsNearby) {
 			this.shopsNearby = shopsNearby;
 			return this;
 		}
 
-		public ZoneBuilder entertainmentNearby(boolean entertainmentNearby) {
+		public ZoneBuilder entertainmentNearby(Boolean entertainmentNearby) {
 			this.entertainmentNearby = entertainmentNearby;
 			return this;
 		}
 
-		public ZoneBuilder barsNearby(boolean barsNearby) {
+		public ZoneBuilder barsNearby(Boolean barsNearby) {
 			this.barsNearby = barsNearby;
 			return this;
 		}
 
-		public ZoneBuilder publicTransportNearby(boolean publicTransportNearby) {
+		public ZoneBuilder publicTransportNearby(Boolean publicTransportNearby) {
 			this.publicTransportNearby = publicTransportNearby;
 			return this;
 		}
 
-		public ZoneBuilder greatView(boolean greatView) {
+		public ZoneBuilder greatView(Boolean greatView) {
 			this.greatView = greatView;
 			return this;
 		}
 
-		public ZoneBuilder parking(boolean parking) {
+		public ZoneBuilder parking(Boolean parking) {
 			this.parking = parking;
 			return this;
 		}
 
-		public ZoneBuilder hardReachable(boolean hardReachable) {
+		public ZoneBuilder hardReachable(Boolean hardReachable) {
 			this.hardReachable = hardReachable;
 			return this;
 		}

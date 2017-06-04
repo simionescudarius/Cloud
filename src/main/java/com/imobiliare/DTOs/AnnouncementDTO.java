@@ -9,7 +9,8 @@ public class AnnouncementDTO {
 	private Date postDate;
 	private Date expireDate;
 	private Long viewNumber;
-
+	private Integer price;
+	
 	public AnnouncementDTO() {
 	}
 
@@ -61,14 +62,23 @@ public class AnnouncementDTO {
 		this.viewNumber = viewNumber;
 	}
 
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
 	private AnnouncementDTO(Long id, UserDTO owner, RealEstateDTO realEstate, Date postDate, Date expireDate,
-			long viewNumber) {
+			Long viewNumber, Integer price) {
 		this.id = id;
 		this.owner = owner;
 		this.realEstate = realEstate;
 		this.postDate = postDate;
 		this.expireDate = expireDate;
 		this.viewNumber = viewNumber;
+		this.price = price;
 	}
 
 	public static class AnnouncementDTOBuilder {
@@ -77,7 +87,8 @@ public class AnnouncementDTO {
 		private RealEstateDTO realEstate;
 		private Date postDate;
 		private Date expireDate;
-		private long viewNumber;
+		private Long viewNumber;
+		private Integer price;
 
 		public AnnouncementDTOBuilder() {
 		}
@@ -107,14 +118,19 @@ public class AnnouncementDTO {
 			return this;
 		}
 
-		public AnnouncementDTOBuilder viewNumber(long viewNumber) {
+		public AnnouncementDTOBuilder viewNumber(Long viewNumber) {
 			this.viewNumber = viewNumber;
+			return this;
+		}
+		
+		public AnnouncementDTOBuilder price(Integer price) {
+			this.price = price;
 			return this;
 		}
 
 		public AnnouncementDTO create() {
 			return new AnnouncementDTO(this.id, this.owner, this.realEstate,
-					this.postDate, this.expireDate, this.viewNumber);
+					this.postDate, this.expireDate, this.viewNumber, this.price);
 		}
 	}
 }

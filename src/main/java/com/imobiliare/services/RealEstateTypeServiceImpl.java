@@ -36,4 +36,8 @@ public class RealEstateTypeServiceImpl implements RealEstateTypeService {
 		realEstateTypeRepository.delete(id);
 	}
 
+	@Override
+	public RealEstateType getByName(String name) {
+		return realEstateTypeRepository.getByName(name);
+	}
 }

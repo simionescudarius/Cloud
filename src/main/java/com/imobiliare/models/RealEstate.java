@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "realestates")
+@Entity
 @Table(name = "realestates")
 public class RealEstate {
 	@Id
@@ -34,6 +34,9 @@ public class RealEstate {
 	@JoinColumn(name="zone_id", insertable = false, updatable = false)
 	private Zone zone;
 
+	public RealEstate(){
+	}
+	
 	public RealEstate(Long typeId, Long zoneId) {
 		this.typeId = typeId;
 		this.zoneId = zoneId;

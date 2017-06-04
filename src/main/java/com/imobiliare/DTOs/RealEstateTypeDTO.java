@@ -1,7 +1,10 @@
 package com.imobiliare.DTOs;
 
+import javax.validation.constraints.NotNull;
+
 public class RealEstateTypeDTO {
 	private long id;
+	@NotNull
 	private String name;
 
 	public RealEstateTypeDTO(){
