@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.http.auth.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +71,27 @@ public class UserServiceImpl implements UserService {
 		userRepository.updatePhoneNumber(id, phoneNumber);
 	}
 
+	@Override
+	public void validateCredentials(String email, String password) throws InvalidCredentialsException {
+		validateEmail(email);
+		String passwrd = userRepository.getPassword(email);
+		if (passwrd == null || !passwrd.equals(password)){
+			throw new InvalidCredentialsException();
+		}
+	}
+
+	@Override
+	public String getRole(String email) {
+		validateEmail(email);
+		return userRepository.getRole(email);
+	}
+	
+	@Override
+	public Long getId(String email) {
+		validateEmail(email);
+		return Long.valueOf(userRepository.getId(email));
+	}
+	
 	private void validatePhoneNumber(String phoneNumber) {
 		if (!phoneNumber.matches("[0-9]+") || phoneNumber.length() != CountryPhoneEnum.ROMANIA.getPhoneNumberLength()) {
 			throw new IllegalArgumentException("Invalid phone number !");

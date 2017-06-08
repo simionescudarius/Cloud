@@ -21,8 +21,8 @@ public class UserValidator implements Validator {
 		}
 		UserDTO user = (UserDTO) target;
 
-		if (user.getEmail() == null || user.getFirstName() == null || user.getLastName() == null
-				|| user.getPhoneNumber() == null) {
+		if (user.getEmail() == null || user.getFirstName() == null
+				|| user.getLastName() == null || user.getPhoneNumber() == null) {
 			errors.reject("User data is null !");
 		}
 	}

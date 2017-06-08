@@ -11,7 +11,7 @@ public class UserDTO {
 	private List<AnnouncementDTO> announcements;
 	private List<MeetingDTO> meetings;
 
-	public UserDTO(){
+	public UserDTO() {
 	}
 
 	public Long getId() {
@@ -69,7 +69,7 @@ public class UserDTO {
 	public void setMeetings(List<MeetingDTO> meetings) {
 		this.meetings = meetings;
 	}
-	
+
 	private UserDTO(Long id, String firstName, String lastName, String email, String phoneNumber,
 			List<AnnouncementDTO> announcements, List<MeetingDTO> meetings) {
 		this.id = id;
@@ -92,8 +92,8 @@ public class UserDTO {
 
 		public UserDTOBuilder() {
 		}
-		
-		public UserDTOBuilder id (Long id){
+
+		public UserDTOBuilder id(Long id) {
 			this.id = id;
 			return this;
 		}
@@ -129,8 +129,7 @@ public class UserDTO {
 		}
 
 		public UserDTO create() {
-			return new UserDTO(this.id, this.firstName, this.lastName, this.email, this.phoneNumber, this.announcements,
-					this.meetings);
+			return new UserDTO(id, firstName, lastName, email, phoneNumber, announcements, meetings);
 		}
 
 	}

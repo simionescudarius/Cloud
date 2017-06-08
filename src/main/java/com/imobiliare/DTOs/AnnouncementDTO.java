@@ -10,7 +10,7 @@ public class AnnouncementDTO {
 	private Date expireDate;
 	private Long viewNumber;
 	private Integer price;
-	
+
 	public AnnouncementDTO() {
 	}
 
@@ -122,15 +122,14 @@ public class AnnouncementDTO {
 			this.viewNumber = viewNumber;
 			return this;
 		}
-		
+
 		public AnnouncementDTOBuilder price(Integer price) {
 			this.price = price;
 			return this;
 		}
 
 		public AnnouncementDTO create() {
-			return new AnnouncementDTO(this.id, this.owner, this.realEstate,
-					this.postDate, this.expireDate, this.viewNumber, this.price);
+			return new AnnouncementDTO(id, owner, realEstate, postDate, expireDate, viewNumber, price);
 		}
 	}
 }

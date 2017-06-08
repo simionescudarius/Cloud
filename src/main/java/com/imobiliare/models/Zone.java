@@ -15,7 +15,7 @@ public class Zone {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "zone_id")
 	private long id;
-
+	
 	@NotNull
 	@Column(name = "post_code")
 	private Integer postalCode;

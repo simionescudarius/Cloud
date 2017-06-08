@@ -3,6 +3,9 @@ package com.imobiliare.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.relation.InvalidRoleInfoException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imobiliare.DTOs.AnnouncementDTO;
+import com.imobiliare.enums.UserRoles;
 import com.imobiliare.models.Announcement;
 import com.imobiliare.models.RealEstate;
 import com.imobiliare.models.RealEstateType;
 import com.imobiliare.models.Zone;
+import com.imobiliare.security.JwtUser;
 import com.imobiliare.services.AnnouncementService;
 import com.imobiliare.services.RealEstateService;
 import com.imobiliare.services.RealEstateTypeService;
@@ -62,10 +67,18 @@ public class AnnouncementController extends Controller {
 		return new ResponseEntity<List<AnnouncementDTO>>(announcementDTOs, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, value = "/post")
 	public ResponseEntity<AnnouncementDTO> save(@RequestBody AnnouncementDTO announcementDTO,
-			BindingResult validationResult) {
+			BindingResult validationResult, HttpServletRequest request) {
 		Zone zone;
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < 1) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
 		announcementValidator.validate(announcementDTO, validationResult);
 		if (validationResult.hasErrors()) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);

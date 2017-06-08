@@ -17,7 +17,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
-	private long id;
+	private Long id;
+
+	@NotNull
+	@Column(name = "email")
+	private String email;
 
 	@NotNull
 	@Column(name = "first_name")
@@ -28,20 +32,24 @@ public class User {
 	private String lastName;
 
 	@NotNull
-	@Column(name = "email")
-	private String email;
+	@Column(name = "password")
+	private String password;
 
 	@NotNull
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
-	@OneToMany(mappedBy="owner")
+
+	@NotNull
+	@Column(name = "role")
+	private String role;
+
+	@OneToMany(mappedBy = "owner")
 	private List<Announcement> announcements;
-	
-	@OneToMany(mappedBy="user1")
+
+	@OneToMany(mappedBy = "user1")
 	private List<Meeting> meetings;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -57,7 +65,7 @@ public class User {
 		return phoneNumber;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -97,4 +105,19 @@ public class User {
 		this.meetings = meetings;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

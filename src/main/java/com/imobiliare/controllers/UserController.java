@@ -3,6 +3,9 @@ package com.imobiliare.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.relation.InvalidRoleInfoException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +18,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imobiliare.DTOs.UserDTO;
+import com.imobiliare.enums.UserRoles;
 import com.imobiliare.enums.UserUpdateEnum;
 import com.imobiliare.models.User;
+import com.imobiliare.security.JwtUser;
 import com.imobiliare.services.UserService;
 import com.imobiliare.transformers.UserTransformer;
 import com.imobiliare.validators.UserValidator;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "v1/users")
+@RequestMapping(value = "/v1/users")
 public class UserController extends Controller {
 	@Autowired
 	UserService userService;
@@ -35,7 +40,15 @@ public class UserController extends Controller {
 	UserValidator userValidator;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<UserDTO>> getAll() {
+	public ResponseEntity<List<UserDTO>> getAll(HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_5_AUTH) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
 		List<User> users = userService.getAll();
 		if (users == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -45,14 +58,17 @@ public class UserController extends Controller {
 		return new ResponseEntity<List<UserDTO>>(usersDTOs, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/id={userId}")
-	public ResponseEntity<UserDTO> getById(@PathVariable("userId") Long id) {
+	@RequestMapping(method = RequestMethod.GET, value = "/myInfos")
+	public ResponseEntity<UserDTO> getById(HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
 		try {
-			validateNullData(id);
-		} catch (IllegalArgumentException exception) {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_1_AUTH) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
-		User user = userService.getById(id);
+		User user = userService.getById(sessionUser.getId());
 		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -61,8 +77,16 @@ public class UserController extends Controller {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/email={email}/")
-	public ResponseEntity<UserDTO> getByEmail(@PathVariable("email") String email) {
+	public ResponseEntity<UserDTO> getByEmail(@PathVariable("email") String email, HttpServletRequest request) {
 		User user;
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_5_AUTH) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
 		try {
 			validateNullData(email);
 			user = userService.getByEmail(email);
@@ -76,7 +100,7 @@ public class UserController extends Controller {
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDto, BindingResult validationResult) {
 		userValidator.validate(userDto, validationResult);
 		if (validationResult.hasErrors()) {
@@ -88,16 +112,23 @@ public class UserController extends Controller {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/id={userId}/{option}")
 	public ResponseEntity<UserDTO> update(@PathVariable("userId") Long id, @PathVariable("option") String option,
-			@RequestBody String data) {
+			@RequestBody String data, HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
 		try {
 			validateNullData(id, option, data);
-		} catch (IllegalArgumentException exception) {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < UserUpdateEnum.toEnum(option)
+					.getReqAuthLevel()) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (IllegalArgumentException | InvalidRoleInfoException exception) {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
+
 		User user = userService.getById(id);
 		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
+
 		try {
 			switch (UserUpdateEnum.toEnum(option)) {
 			case FIRSTNAME:
@@ -120,7 +151,15 @@ public class UserController extends Controller {
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE, value = "/id={userId}")
-	public ResponseEntity<UserDTO> deleteById(@PathVariable("userId") Long id) {
+	public ResponseEntity<UserDTO> deleteById(@PathVariable("userId") Long id, HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_5_AUTH) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
 		try {
 			validateNullData(id);
 		} catch (IllegalArgumentException exception) {

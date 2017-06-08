@@ -2,8 +2,6 @@ package com.imobiliare.controllers;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -24,15 +22,6 @@ import com.imobiliare.DTOs.UserDTO;
 public class UserControllerTest {
 	@Autowired
 	UserController userController;
-
-	@Test
-	public void whenRequestGetAllShouldReturnOkAndUserDTOList() throws InstantiationException, IllegalAccessException {
-		UserDTO userDto = new UserDTO.UserDTOBuilder().email("email1@gmail.com").firstName("testUser").lastName("testUser")
-				.phoneNumber("1233211231").create();
-		userController.save(userDto, new BeanPropertyBindingResult(userDto, "UserDTO"));
-		ResponseEntity<List<UserDTO>> response = userController.getAll();
-		assertTrue(response != null);
-	}
 
 	@SuppressWarnings("rawtypes")
 	@Test
