@@ -1,0 +1,87 @@
+<header id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="fill" id="slide1">
+      </div>
+      <div class="carousel-caption">
+        <div class="input-group search-group">
+          <div class="input-group-btn btn-grou">
+            <button type="button" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown">
+              <span>{{selectedOption}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu " role="menu">
+              <li *ngFor="let choice of searchOptions">
+                <a href="#" style="text-shadow: none;" (click)="test(choice)">{{choice}}</a>
+              </li>
+            </ul>
+          </div>
+          <input type="text" class="form-control search-form" placeholder="Search">
+          <span class="input-group-btn btn-grou">
+                   <button class="btn btn-default search-btn" type="Search" (click)="searchResults()"><span
+                     class="glyphicon glyphicon-search"></span></button>
+                </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="fill" id="slide2"></div>
+      <div class="carousel-caption">
+        <div class="input-group search-group">
+          <div class="input-group-btn btn-grou">
+            <button type="button" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown">
+              <span>{{selectedOption}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu " role="menu">
+              <li *ngFor="let choice of searchOptions">
+                <a href="#" style="text-shadow: none;" (click)="test(choice)">{{choice}}</a>
+              </li>
+            </ul>
+          </div>
+          <input type="text" class="form-control search-form" placeholder="Search">
+          <span class="input-group-btn btn-grou">
+                   <button class="btn btn-default search-btn" type="Search" (click)="searchResults()"><span
+                     class="glyphicon glyphicon-search"></span></button>
+                </span>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="fill" id="slide3"></div>
+      <div class="carousel-caption">
+        <div class="input-group search-group">
+          <div class="input-group-btn btn-grou">
+            <button type="button" class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown">
+              <span>{{selectedOption}}</span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu " role="menu">
+              <li *ngFor="let choice of searchOptions">
+                <a href="#" style="text-shadow: none;" (click)="test(choice)">{{choice}}</a>
+              </li>
+            </ul>
+          </div>
+          <input type="text" class="form-control search-form" placeholder="Search">
+          <span class="input-group-btn btn-grou">
+                   <button class="btn btn-default search-btn" type="Search" (click)="searchResults()"><span
+                     class="glyphicon glyphicon-search"></span></button>
+                </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev" style="width: 5%">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next" style="width: 5%">
+    <span class="icon-next"></span>
+  </a>
+</header>
