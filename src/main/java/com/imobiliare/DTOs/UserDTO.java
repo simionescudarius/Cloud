@@ -6,6 +6,7 @@ public class UserDTO {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	private String password;
 	private String email;
 	private String phoneNumber;
 	private List<AnnouncementDTO> announcements;
@@ -68,6 +69,14 @@ public class UserDTO {
 
 	public void setMeetings(List<MeetingDTO> meetings) {
 		this.meetings = meetings;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	private UserDTO(Long id, String firstName, String lastName, String email, String phoneNumber,

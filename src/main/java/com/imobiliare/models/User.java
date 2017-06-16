@@ -46,6 +46,9 @@ public class User {
 	@OneToMany(mappedBy = "owner")
 	private List<Announcement> announcements;
 
+	@OneToMany(mappedBy = "user")
+	private List<FavouriteAnnouncement> favourites;
+
 	@OneToMany(mappedBy = "user1")
 	private List<Meeting> meetings;
 

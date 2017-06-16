@@ -66,6 +66,17 @@ public class AnnouncementController extends Controller {
 		announcements.forEach((k) -> announcementDTOs.add(announcementTransformer.toDTO(k)));
 		return new ResponseEntity<List<AnnouncementDTO>>(announcementDTOs, HttpStatus.OK);
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="/popular")
+	public ResponseEntity<List<AnnouncementDTO>> getMostPopular() {
+		List<Announcement> announcements = announcementService.getMostPopular();
+		if (announcements == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		List<AnnouncementDTO> announcementDTOs = new ArrayList<>();
+		announcements.forEach((k) -> announcementDTOs.add(announcementTransformer.toDTO(k)));
+		return new ResponseEntity<List<AnnouncementDTO>>(announcementDTOs, HttpStatus.OK);
+	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/post")
 	public ResponseEntity<AnnouncementDTO> save(@RequestBody AnnouncementDTO announcementDTO,
@@ -117,9 +128,11 @@ public class AnnouncementController extends Controller {
 		if (announcement == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
+		announcementService.incViewNumber(id);
+		announcement.setViewNumber(announcement.getViewNumber()+1);
 		return new ResponseEntity<AnnouncementDTO>(announcementTransformer.toDTO(announcement), HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/type={type}")
 	public ResponseEntity<List<AnnouncementDTO>> getByRealEstateType(@PathVariable("type") String type) {
 		try {
@@ -129,6 +142,23 @@ public class AnnouncementController extends Controller {
 		}
 
 		List<Announcement> announcements = announcementService.getByRealEstateType(type);
+		if (announcements == null) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<AnnouncementDTO>>(announcementTransformer.toDTOList(announcements),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/type={type}/roomNumber={roomNumber}")
+	public ResponseEntity<List<AnnouncementDTO>> getByRealEstateTypeAndRoomNumber(@PathVariable("type") String type,
+			@PathVariable("roomNumber") Integer roomNumber) {
+		try {
+			validateNullData(type, roomNumber);
+		} catch (IllegalArgumentException exception) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
+
+		List<Announcement> announcements = announcementService.getByRealEstateRoomNumberAndType(roomNumber, type);
 		if (announcements == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}

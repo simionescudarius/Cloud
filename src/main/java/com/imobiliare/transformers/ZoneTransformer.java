@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import com.imobiliare.DTOs.ZoneDTO;
 import com.imobiliare.models.Zone;
 
-
 @Component
 public class ZoneTransformer implements Transformer<Zone, ZoneDTO> {
 
@@ -18,7 +17,8 @@ public class ZoneTransformer implements Transformer<Zone, ZoneDTO> {
 				.id(object.getId()).latitude(object.getLatitude()).longitude(object.getLongitude())
 				.noisePollution(object.getNoisePollution()).parking(toBoolean(object.getParking()))
 				.postalCode(object.getPostalCode()).publicTransportNearby(toBoolean(object.getPublicTransportNearby()))
-				.shopsNearby(toBoolean(object.getShopsNearby())).wastePollution(object.getWastePollution()).create();
+				.shopsNearby(toBoolean(object.getShopsNearby())).wastePollution(object.getWastePollution())
+				.name(object.getName()).create();
 	}
 
 	@Override
@@ -28,7 +28,8 @@ public class ZoneTransformer implements Transformer<Zone, ZoneDTO> {
 				.hardReachable(object.isHardReachable()).latitude(object.getLatitude()).longitude(object.getLongitude())
 				.noisePollution(object.getNoisePollution()).parking(object.isParking())
 				.postalCode(object.getPostalCode()).publicTransportNearby(object.isPublicTransportNearby())
-				.shopsNearby(object.isShopsNearby()).wastePollution(object.getWastePollution()).create();
+				.shopsNearby(object.isShopsNearby()).wastePollution(object.getWastePollution()).name(object.getName())
+				.create();
 	}
 
 	private boolean toBoolean(Byte value) {

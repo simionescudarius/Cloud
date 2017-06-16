@@ -1,6 +1,11 @@
 package com.imobiliare.services;
 
-import com.imobiliare.models.Meeting;
+import java.util.List;
 
-public interface MeetingService extends CrudService<Meeting> {
+import com.imobiliare.models.Meeting;
+import com.imobiliare.models.User;
+
+public interface MeetingService extends CrudService<Meeting, Long> {
+	void acceptMeeting(Long id);
+	List<Meeting> getMyMeetings(User user);
 }

@@ -25,6 +25,14 @@ public class RealEstate {
 	@NotNull
 	@Column(name = "zone_id")
 	private Long zoneId;
+	
+	@NotNull
+	@Column(name = "area")
+	private int area;
+	
+	@NotNull
+	@Column(name = "room_number")
+	private int roomNumber;
 
 	@ManyToOne
 	@JoinColumn(name="type_id", insertable = false, updatable = false)
@@ -37,9 +45,11 @@ public class RealEstate {
 	public RealEstate(){
 	}
 	
-	public RealEstate(Long typeId, Long zoneId) {
+	public RealEstate(Long typeId, Long zoneId, int area, int roomNumber) {
 		this.typeId = typeId;
 		this.zoneId = zoneId;
+		this.area = area;
+		this.roomNumber = roomNumber;
 	}
 
 	public long getId() {
@@ -80,5 +90,21 @@ public class RealEstate {
 
 	public void setZoneId(Long zoneId) {
 		this.zoneId = zoneId;
+	}
+
+	public int getArea() {
+		return area;
+	}
+
+	public void setArea(int area) {
+		this.area = area;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 }

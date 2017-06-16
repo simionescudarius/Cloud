@@ -17,6 +17,10 @@ public class Zone {
 	private long id;
 	
 	@NotNull
+	@Column(name = "name")
+	private String name;
+	
+	@NotNull
 	@Column(name = "post_code")
 	private Integer postalCode;
 
@@ -183,9 +187,21 @@ public class Zone {
 		this.hardReachable = hardReachable;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPostalCode(Integer postalCode) {
+		this.postalCode = postalCode;
+	}
+
 	private Zone(Integer postalCode, double latitude, double longitude, byte wastePollution, byte noisePollution,
 			byte chimicPollution, byte shopsNearby, byte entertainmentNearby, byte barsNearby,
-			byte publicTransportNearby, byte greatView, byte parking, byte hardReachable) {
+			byte publicTransportNearby, byte greatView, byte parking, byte hardReachable, String name) {
 		this.postalCode = postalCode;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -199,6 +215,7 @@ public class Zone {
 		this.greatView = greatView;
 		this.parking = parking;
 		this.hardReachable = hardReachable;
+		this.name = name;
 	}
 
 	public static class ZoneBuilder {
@@ -215,6 +232,7 @@ public class Zone {
 		private byte greatView;
 		private byte parking;
 		private byte hardReachable;
+		private String name;
 
 		public ZoneBuilder() {
 		}
@@ -222,6 +240,12 @@ public class Zone {
 		public ZoneBuilder postalCode(Integer postalCode) {
 			validateNullData(postalCode);
 			this.postalCode = postalCode;
+			return this;
+		}
+		
+		public ZoneBuilder name(String name) {
+			validateNullData(name);
+			this.name = name;
 			return this;
 		}
 
@@ -321,7 +345,7 @@ public class Zone {
 		public Zone create() {
 			return new Zone(postalCode, latitude, longitude, wastePollution, noisePollution, chimicPollution,
 					shopsNearby, entertainmentNearby, barsNearby, publicTransportNearby, greatView, parking,
-					hardReachable);
+					hardReachable, name);
 		}
 
 		private void validateNullData(Object object) {

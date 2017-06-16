@@ -27,10 +27,11 @@ public class UserTransformer implements Transformer<User, UserDTO> {
 	public User toModel(UserDTO object) {
 		User user = new User();
 		user.setEmail(object.getEmail());
+		user.setPassword(object.getPassword());
 		user.setFirstName(object.getFirstName());
 		user.setLastName(object.getLastName());
 		user.setPhoneNumber(object.getPhoneNumber());
+		user.setRole("admin");
 		return user;
 	}
-
 }

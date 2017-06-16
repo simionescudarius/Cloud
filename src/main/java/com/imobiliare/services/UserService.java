@@ -4,7 +4,7 @@ import org.apache.http.auth.InvalidCredentialsException;
 
 import com.imobiliare.models.User;
 
-public interface UserService extends CrudService<User> {
+public interface UserService extends CrudService<User, Long> {
 	void updateFirstName(long id, String firstName);
 	void updateLastName(long id, String lastName);
 	void updateEmail(long id, String email);

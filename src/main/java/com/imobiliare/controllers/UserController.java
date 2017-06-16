@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -59,7 +58,7 @@ public class UserController extends Controller {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/myInfos")
-	public ResponseEntity<UserDTO> getById(HttpServletRequest request) {
+	public ResponseEntity<UserDTO> getInfos(HttpServletRequest request) {
 		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
 		try {
 			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_1_AUTH) {
@@ -69,6 +68,24 @@ public class UserController extends Controller {
 			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
 		}
 		User user = userService.getById(sessionUser.getId());
+		if (user == null) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		UserDTO userDTO = userTransformer.toDTO(user);
+		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/id={userId}")
+	public ResponseEntity<UserDTO> getUser(@PathVariable("userId") Long userId, HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_1_AUTH) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
+		User user = userService.getById(userId);
 		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
@@ -98,16 +115,6 @@ public class UserController extends Controller {
 		}
 		UserDTO userDTO = userTransformer.toDTO(user);
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
-	}
-
-	@RequestMapping(method = RequestMethod.POST, value = "/register")
-	public ResponseEntity<UserDTO> save(@RequestBody UserDTO userDto, BindingResult validationResult) {
-		userValidator.validate(userDto, validationResult);
-		if (validationResult.hasErrors()) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-		}
-		userService.save(userTransformer.toModel(userDto));
-		return new ResponseEntity<UserDTO>(HttpStatus.CREATED);
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/id={userId}/{option}")

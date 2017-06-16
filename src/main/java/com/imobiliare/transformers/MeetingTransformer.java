@@ -13,8 +13,8 @@ public class MeetingTransformer implements Transformer<Meeting, MeetingDTO> {
 
 	@Override
 	public MeetingDTO toDTO(Meeting object) {
-		return new MeetingDTO(object.getId(), new UserTransformer().toDTO(object.getUser1()),
-				new UserTransformer().toDTO(object.getUser2()));
+		return new MeetingDTO(object.getId(), object.getUser1().getId(), object.getUser2().getId(),
+				object.getAnnouncement().getId());
 	}
 
 	public List<MeetingDTO> toDTOList(List<Meeting> list) {

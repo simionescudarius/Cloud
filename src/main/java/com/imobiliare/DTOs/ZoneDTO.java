@@ -15,6 +15,7 @@ public class ZoneDTO {
 	private Boolean greatView;
 	private Boolean parking;
 	private Boolean hardReachable;
+	private String name;
 
 	public ZoneDTO (){
 	}
@@ -131,10 +132,18 @@ public class ZoneDTO {
 		this.hardReachable = hardReachable;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	private ZoneDTO(long id, Integer postalCode, Double latitude, Double longitude, Byte wastePollution,
 			Byte noisePollution, Byte chimicPollution, Boolean shopsNearby, Boolean entertainmentNearby,
 			Boolean barsNearby, Boolean publicTransportNearby, Boolean greatView, Boolean parking,
-			Boolean hardReachable) {
+			Boolean hardReachable, String name) {
 		this.id = id;
 		this.postalCode = postalCode;
 		this.latitude = latitude;
@@ -149,6 +158,7 @@ public class ZoneDTO {
 		this.greatView = greatView;
 		this.parking = parking;
 		this.hardReachable = hardReachable;
+		this.name = name;
 	}
 
 	public static class ZoneBuilder {
@@ -166,12 +176,18 @@ public class ZoneDTO {
 		private Boolean greatView;
 		private Boolean parking;
 		private Boolean hardReachable;
+		private String name;
 
 		public ZoneBuilder() {
 		}
 
 		public ZoneBuilder id(long id) {
 			this.id = id;
+			return this;
+		}
+		
+		public ZoneBuilder name(String name) {
+			this.name = name;
 			return this;
 		}
 
@@ -243,7 +259,7 @@ public class ZoneDTO {
 		public ZoneDTO create() {
 			return new ZoneDTO(this.id, this.postalCode, this.latitude, this.longitude, this.wastePollution,
 					this.noisePollution, this.chimicPollution, this.shopsNearby, this.entertainmentNearby,
-					this.barsNearby, this.publicTransportNearby, this.greatView, this.parking, this.hardReachable);
+					this.barsNearby, this.publicTransportNearby, this.greatView, this.parking, this.hardReachable, this.name);
 		}
 	}
 

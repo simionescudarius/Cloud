@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getById(Long id) {
-		return userRepository.getOne(id);
+		return userRepository.findOne(id);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private void validateEmail(String email){
-		if (!email.matches("[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]+")) {
+		if (!email.matches("[a-zA-Z0-9]+@[a-zA-Z]+[.][a-zA-Z]+")) {
 			throw new IllegalArgumentException("Invalid email !");
 		}
 	}

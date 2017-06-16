@@ -4,11 +4,13 @@ import java.util.Date;
 
 public class AnnouncementDTO {
 	private Long id;
+	private String name;
 	private UserDTO owner;
 	private RealEstateDTO realEstate;
 	private Date postDate;
 	private Date expireDate;
 	private Long viewNumber;
+	private String description;
 	private Integer price;
 
 	public AnnouncementDTO() {
@@ -70,24 +72,44 @@ public class AnnouncementDTO {
 		this.price = price;
 	}
 
-	private AnnouncementDTO(Long id, UserDTO owner, RealEstateDTO realEstate, Date postDate, Date expireDate,
-			Long viewNumber, Integer price) {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	private AnnouncementDTO(Long id, String name, UserDTO owner, RealEstateDTO realEstate, Date postDate, Date expireDate,
+			Long viewNumber, String description, Integer price) {
 		this.id = id;
+		this.name = name;
 		this.owner = owner;
 		this.realEstate = realEstate;
 		this.postDate = postDate;
 		this.expireDate = expireDate;
 		this.viewNumber = viewNumber;
+		this.description = description;
 		this.price = price;
 	}
 
 	public static class AnnouncementDTOBuilder {
 		private Long id;
+		private String name;
 		private UserDTO owner;
 		private RealEstateDTO realEstate;
 		private Date postDate;
 		private Date expireDate;
 		private Long viewNumber;
+		private String description;
 		private Integer price;
 
 		public AnnouncementDTOBuilder() {
@@ -95,6 +117,11 @@ public class AnnouncementDTO {
 
 		public AnnouncementDTOBuilder id(Long id) {
 			this.id = id;
+			return this;
+		}
+		
+		public AnnouncementDTOBuilder name(String name) {
+			this.name = name;
 			return this;
 		}
 
@@ -122,6 +149,11 @@ public class AnnouncementDTO {
 			this.viewNumber = viewNumber;
 			return this;
 		}
+		
+		public AnnouncementDTOBuilder description(String description) {
+			this.description = description;
+			return this;
+		}
 
 		public AnnouncementDTOBuilder price(Integer price) {
 			this.price = price;
@@ -129,7 +161,7 @@ public class AnnouncementDTO {
 		}
 
 		public AnnouncementDTO create() {
-			return new AnnouncementDTO(id, owner, realEstate, postDate, expireDate, viewNumber, price);
+			return new AnnouncementDTO(id, name, owner, realEstate, postDate, expireDate, viewNumber, description, price);
 		}
 	}
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.imobiliare.models.Meeting;
+import com.imobiliare.models.User;
 import com.imobiliare.repositories.MeetingRepository;
 
 @Service
@@ -15,7 +16,7 @@ import com.imobiliare.repositories.MeetingRepository;
 public class MeetingServiceImpl implements MeetingService {
 	@Autowired
 	MeetingRepository meetingRepository;
-	
+
 	@Override
 	public void save(Meeting object) {
 		meetingRepository.save(object);
@@ -34,6 +35,16 @@ public class MeetingServiceImpl implements MeetingService {
 	@Override
 	public void delete(Long id) {
 		meetingRepository.delete(id);
+	}
+
+	@Override
+	public void acceptMeeting(Long id) {
+		this.meetingRepository.acceptMeeting(id);
+	}
+
+	@Override
+	public List<Meeting> getMyMeetings(User user) {
+		return this.meetingRepository.findAllByUser1(user);
 	}
 
 }
