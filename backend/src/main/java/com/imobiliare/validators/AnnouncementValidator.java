@@ -22,9 +22,6 @@ public class AnnouncementValidator implements Validator {
 
 		AnnouncementDTO announcement = (AnnouncementDTO) target;
 
-		if (announcement.getOwner().getId() == null) {
-			errors.rejectValue("UserId", "User id is null !");
-		}
 		if (announcement.getPostDate() == null) {
 			errors.rejectValue("PostDate", "Post date is null !");
 		}

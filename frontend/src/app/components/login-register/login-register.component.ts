@@ -41,7 +41,6 @@ export class LoginRegisterComponent implements OnInit {
   }
 
   login(value) {
-    alert("DA");
     if (this.check == true) {
       localStorage.setItem("email", this.loginForm.value.email);
       localStorage.setItem("psw", this.loginForm.value.password);
@@ -54,13 +53,13 @@ export class LoginRegisterComponent implements OnInit {
         data => {
           this.logged = true;
           this.loginFailed = false;
+          setTimeout(() => window.location.reload(), 1000);
         },
         error => {
           alert("Failed" + error);
           this.logged = false;
           this.loginFailed = true;
         });
-    setTimeout(() => window.location.reload(), 1000);
   }
 
   reg(value) {

@@ -5,6 +5,7 @@ import {isUndefined} from "util";
 import {ActivatedRoute, Params} from "@angular/router";
 import {AnnouncementService} from "app/services/announcement.service";
 import {AuthenticationService} from "../../services/authentication.service";
+import {Coordonate} from "../map/coordonate";
 
 @Component({
   selector: 'app-announcement',
@@ -16,10 +17,31 @@ export class AnnouncementComponent implements OnInit {
 
   logged: boolean;
   noData: boolean = false;
+  noise: boolean = false;
+  chimic: boolean = false;
+  waste: boolean = false;
   announcement: Announcement = new Announcement();
+  announcementInfos: any [] = [];
+  mapLat: number = 0;
+  mapLng: number = 0;
+  noiseMeter: number = 0;
+  wasteMeter: number = 0;
+  chimicMeter: number = 0;
 
   constructor(private _announcementService: AnnouncementService, private _route: ActivatedRoute,
               private _authenticationService: AuthenticationService) {
+  }
+
+  noiseP() {
+    this.noise = !this.noise;
+  }
+
+  chimicP() {
+    this.chimic = !this.chimic;
+  }
+
+  wasteP() {
+    this.waste = !this.waste;
   }
 
   ngOnInit() {
@@ -30,6 +52,7 @@ export class AnnouncementComponent implements OnInit {
             this.noData = true;
           } else if (data.status == 200) {
             var temp = data.json();
+            console.log(data.json());
             this.announcement.id = temp.id;
             this.announcement.name = temp.name;
             this.announcement.price = temp.price;
@@ -44,8 +67,11 @@ export class AnnouncementComponent implements OnInit {
             this.announcement.realEstate.type.name = temp.realEstate.type.name;
             this.announcement.realEstate.roomNumber = temp.realEstate.roomNumber;
             this.announcement.realEstate.zone.name = temp.realEstate.zone.name;
-            this.announcement.realEstate.zone.latitude = temp.realEstate.zone.latitude;
-            this.announcement.realEstate.zone.longidute = temp.realEstate.zone.longidute;
+            this.mapLat = temp.realEstate.zone.latitude;
+            this.mapLng = temp.realEstate.zone.longitude;
+            this.chimicMeter = temp.realEstate.zone.chimicPollution * 10;
+            this.noiseMeter = temp.realEstate.zone.noisePollution * 10;
+            this.wasteMeter = temp.realEstate.zone.wastePollution * 10;
           }
         },
         error => {
@@ -53,6 +79,24 @@ export class AnnouncementComponent implements OnInit {
         }
       );
     });
+    this._announcementService.getAnnouncements("all", 0).subscribe(
+      data => {
+        console.log(data.json());
+        let temp = data.json();
+        for (let index = 0; index < temp.length; ++index) {
+          var announcementInfo = new Coordonate();
+          announcementInfo.lat = temp[index].realEstate.zone.latitude;
+          announcementInfo.lng = temp[index].realEstate.zone.longitude;
+          announcementInfo.waste = temp[index].realEstate.zone.wastePollution;
+          announcementInfo.chimic = temp[index].realEstate.zone.chimicPollution;
+          announcementInfo.noise = temp[index].realEstate.zone.noisePollution;
+          this.announcementInfos.push(announcementInfo);
+        }
+      },
+      error => {
+        alert("Error" + error);
+      }
+    )
     if (localStorage.getItem('currentUser') != null) {
       this._authenticationService.verify().subscribe(
         data => {

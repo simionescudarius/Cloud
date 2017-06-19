@@ -28,6 +28,8 @@ export class LoggedNavbarComponent implements OnInit {
       if(window.location.pathname != '/home'){
         this._router.navigate(['/home']);
       }else window.location.reload();
+    } else if (option == "announcementForm"){
+      this._router.navigate(['/announcementForm'])
     }
   }
 

@@ -33,7 +33,7 @@ public class AnnouncementTransformer implements Transformer<Announcement, Announ
 		return new Announcement.AnnouncementBuilder().expireDate(object.getExpireDate())
 				.ownerId(object.getOwner().getId()).postDate(object.getPostDate())
 				.realEstateId(object.getRealEstate().getId()).name(object.getName())
-				.description(object.getDescription()).create();
+				.description(object.getDescription()).price(object.getPrice()).create();
 	}
 
 }

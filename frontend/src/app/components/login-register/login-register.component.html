@@ -94,7 +94,7 @@
         <div class="form-group">
           <label for="r_password"><span class="glyphicon glyphicon-eye-open"></span> Password </label>
           <span *ngIf="registerForm.controls['password'].valid"><span class="glyphicon glyphicon-ok-sign"></span></span>
-          <input type="text" class="form-control" name="r_password" id="r_password" placeholder="Enter email"
+          <input type="password" class="form-control" name="r_password" id="r_password" placeholder="Enter email"
                  [formControl]="registerForm.controls['password']"
           >
           <span [hidden]="registerForm.controls['password'].valid || registerForm.controls['password'].pristine">Parola trebuie sa contina minim 6 caractere !</span>
@@ -105,7 +105,7 @@
           <span
             *ngIf="registerForm.controls['repeatpassword'].valid && (registerForm.controls['repeatpassword'].value == registerForm.controls['password'].value)"><span
             class="glyphicon glyphicon-ok-sign"></span></span>
-          <input type="text" class="form-control" name="r_repeatpassword" id="r_repeatpassword"
+          <input type="password" class="form-control" name="r_repeatpassword" id="r_repeatpassword"
                  placeholder="Repeat password"
                  [formControl]="registerForm.controls['repeatpassword']"
           >

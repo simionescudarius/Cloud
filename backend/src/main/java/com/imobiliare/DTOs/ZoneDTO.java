@@ -217,7 +217,7 @@ public class ZoneDTO {
 		}
 
 		public ZoneBuilder chimicPollution(Byte chimicPollution) {
-			this.wastePollution = chimicPollution;
+			this.chimicPollution = chimicPollution;
 			return this;
 		}
 

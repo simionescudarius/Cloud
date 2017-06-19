@@ -8,5 +8,6 @@ public interface AnnouncementService extends CrudService<Announcement, Long> {
 	List<Announcement> getByRealEstateType (String type);
 	List<Announcement> getByRealEstateRoomNumberAndType(int roomNumber, String type);
 	List<Announcement> getMostPopular();
+	List<Announcement> getMyAnnouncements(long id);
 	void incViewNumber (long id);
 }

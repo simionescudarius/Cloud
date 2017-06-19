@@ -1,4 +1,13 @@
-<div class="a-container">
+<span *ngIf="!logged">YOU ARE NOT LOGGED IN !</span>
+<span *ngIf="logged">
+<app-logged-navbar></app-logged-navbar>
+<body>
+<div class="container myContainer">
+  <div class="row">
+    <div class="col-sm-3">
+      <app-left-panel></app-left-panel>
+    </div>
+    <div class="a-container">
   <div class="col-md-3"
        *ngFor="let announcement of userAnnouncements">
     <div class="panel panel-default">
@@ -18,3 +27,8 @@
     </div>
   </div>
 </div>
+  </div>
+</div>
+</body>
+</span>
+

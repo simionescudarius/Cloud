@@ -17,18 +17,21 @@ public interface AnnouncementRepository extends JpaRepository<Announcement, Long
 	@Query("select a from Announcement a where a.realEstateId in (select r.id from RealEstate r where r.typeId = "
 			+ "(select t.id from RealEstateType t where t.name = :type))")
 	List<Announcement> getByRealEstateType(@Param("type") String type);
-	
+
 	@Query("select a from Announcement a where a.realEstateId in (select r.id from RealEstate r "
 			+ "where r.roomNumber = :roomNumber and r.typeId = (select t.id from RealEstateType t where t.name = :type))")
-	List<Announcement> getByRealEstateRoomNumberAndType(@Param("roomNumber") int roomNumber, @Param("type") String type);
-	
+	List<Announcement> getByRealEstateRoomNumberAndType(@Param("roomNumber") int roomNumber,
+			@Param("type") String type);
+
 	List<Announcement> findAllByOrderByPostDateAsc();
-		
-	@Query(value="select a from Announcement a")
+
+	@Query(value = "select a from Announcement a")
 	Page<Announcement> mostPopular(Pageable pageable);
-	
+
 	@Modifying
 	@Query("update Announcement a set a.viewNumber = a.viewNumber+1 where a.id = :id")
 	void incViewNumber(@Param("id") long id);
-			
+
+	List<Announcement> findAllByOwnerId(long ownerId);
+
 }

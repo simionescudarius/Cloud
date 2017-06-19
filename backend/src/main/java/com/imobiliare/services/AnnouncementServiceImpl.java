@@ -64,4 +64,9 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
 	}
 
+	@Override
+	public List<Announcement> getMyAnnouncements(long id) {
+		return this.announcementRepository.findAllByOwnerId(id);
+	}
+
 }

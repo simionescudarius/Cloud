@@ -20,6 +20,7 @@ import com.imobiliare.enums.UserRoles;
 import com.imobiliare.models.Meeting;
 import com.imobiliare.models.User;
 import com.imobiliare.security.JwtUser;
+import com.imobiliare.services.AnnouncementService;
 import com.imobiliare.services.MeetingService;
 import com.imobiliare.services.UserService;
 import com.imobiliare.transformers.MeetingTransformer;
@@ -32,6 +33,8 @@ public class MeetingController extends Controller {
 	UserService userService;
 	@Autowired
 	MeetingService meetingService;
+	@Autowired
+	AnnouncementService announcementService;
 	
 	@Autowired
 	MeetingTransformer meetingTransformer;
@@ -54,8 +57,9 @@ public class MeetingController extends Controller {
 		return new ResponseEntity<>(test2, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{userId}")
-	public ResponseEntity<?> addMeeting(@PathVariable("userId") Long userId, HttpServletRequest request) {
+	@RequestMapping(method = RequestMethod.POST, value = "/{userId}/{announcementId}")
+	public ResponseEntity<?> addMeeting(@PathVariable("userId") Long userId,
+			@PathVariable("announcementId") Long announcementId, HttpServletRequest request) {
 		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
 		User user2;
 		try {
@@ -73,6 +77,7 @@ public class MeetingController extends Controller {
 		Meeting meeting = new Meeting();
 		meeting.setUser1(userService.getById(sessionUser.getId()));
 		meeting.setUser2(userService.getById(userId));
+		meeting.setAnnouncement(announcementService.getById(announcementId));
 		meeting.setAccepted((byte) 0);
 		meetingService.save(meeting);
 		return new ResponseEntity<>(HttpStatus.OK);

@@ -8,7 +8,6 @@
 <span *ngIf="noData; else show;">NO DATA AVAILABLE !</span>
 <ng-template #show>
   <div class="container">
-    <!-- Page Heading/Breadcrumbs -->
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">{{announcement.name}}
@@ -16,19 +15,14 @@
         </h1>
       </div>
     </div>
-    <!-- /.row -->
-
-    <!-- Portfolio Item Row -->
     <div class="row">
       <div class="col-md-6">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
           <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
           </ol>
-          <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
               <img class="img-responsive" src="http://placehold.it/650x500" alt="">
@@ -57,13 +51,57 @@
         <div class="row">
           <div class="col-lg-6">
             <ul>
-              <li>Price: {{announcement.price}}</li>
-              <li>Area: {{announcement.realEstate.area}}</li>
-              <li>Waste pollution: {{announcement.realEstate.zone.wastePollution}}</li>
-              <li>Chimic pollution: {{announcement.realEstate.zone.chimicPollution}}</li>
-              <li>Noise Pollution: {{announcement.realEstate.zone.noisePollution}}</li>
-              <li>Shops nearby: {{announcement.realEstate.zone.shopsNearby}}</li>
-              <li>Entertainment nearby: {{announcement.realEstate.zone.entertainmentNearby}}</li>
+              <li>Type: {{announcement.realEstate.type.name}}</li>
+              <li>Price: {{announcement.price}} &euro;</li>
+              <li>Area: {{announcement.realEstate.area}} m<sup>2</sup></li>
+              <li>Shops nearby: <span *ngIf="announcement.realEstate.zone.shopsNearby">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.shopsNearby">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Entertainment nearby:
+                <span *ngIf="announcement.realEstate.zone.entertainmentNearby">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.entertainmentNearby">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Bars nearby:
+                <span *ngIf="announcement.realEstate.zone.barsNearby">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.barsNearby">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Public transport nearby:
+                <span *ngIf="announcement.realEstate.zone.publicTransportNearby">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.publicTransportNearby">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Great view:
+                <span *ngIf="announcement.realEstate.zone.greatView">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.greatView">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Parking:
+                <span *ngIf="announcement.realEstate.zone.parking">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.parking">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
+              <li>Hard reachable:
+                <span *ngIf="announcement.realEstate.zone.hardReachable">
+                <span class="glyphicon glyphicon-ok" style="color: green;"></span>
+              </span>
+                <span *ngIf="!announcement.realEstate.zone.hardReachable">
+                <span class="glyphicon glyphicon-remove" style="color: red;"></span>
+              </span></li>
             </ul>
             <h3>Owner details</h3>
             <ul>
@@ -74,13 +112,30 @@
             </ul>
           </div>
           <div class="col-lg-6">
-            <ul>
-              <li>Bars nearby: {{announcement.realEstate.zone.barsNearby}}</li>
-              <li>Public transport nearby: {{announcement.realEstate.zone.publicTransportNearby}}</li>
-              <li>Great view: {{announcement.realEstate.zone.greatView}}</li>
-              <li>Parking: {{announcement.realEstate.zone.parking}}</li>
-              <li>Hard reachable: {{announcement.realEstate.zone.hardReachable}}</li>
-            </ul>
+            <div class="container">
+              <div class="row">
+                <div class="span3">
+                  <h4>Pollution meter:</h4>
+                  <ul class="unstyled">
+                    <li>Noise pollution <span class="pull-right strong">{{noiseMeter}}%</span>
+                      <div class="progress progress-important">
+                        <div class="bar" style="background: yellow; height: 100%" [style.width.%]="noiseMeter"></div>
+                      </div>
+                    </li>
+                    <li>Waste pollution<span class="pull-right strong">{{wasteMeter}}%</span>
+                      <div class="progress progress-success">
+                        <div class="bar" style="background: green; height: 100%" [style.width.%]="wasteMeter"></div>
+                      </div>
+                    </li>
+                    <li>Chimic pollution<span class="pull-right strong">{{chimicMeter}}%</span>
+                      <div class="progress progress-success">
+                        <div class="bar" style="background: red; height: 100%" [style.width.%]="chimicMeter"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -91,27 +146,44 @@
       <div class="col-md-2 col-sm-2 col-xs-4">
         <h5>Noise pollution</h5>
         <div class="switch">
-          <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+          <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="noiseP()">
           <label for="cmn-toggle-1"></label>
         </div>
       </div>
       <div class="col-md-2 col-sm-2 col-xs-4">
-        <h5>Waste pollution</h5>
+        <h5>Chimic pollution</h5>
         <div class="switch">
-          <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+          <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="chimicP()">
           <label for="cmn-toggle-2"></label>
         </div>
       </div>
       <div class="col-md-2 col-sm-2 col-xs-4">
         <h5>Waste pollution</h5>
         <div class="switch">
-          <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+          <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="wasteP()">
           <label for="cmn-toggle-3"></label>
         </div>
       </div>
     </div>
   </div>
-  <div class="map-container">
-    <div id="map"></div>
-  </div>
+  <agm-map [latitude]="mapLat" [longitude]="mapLng" [zoom]="15">
+  <span *ngFor="let info of announcementInfos">
+  <agm-marker [latitude]="mapLat" [longitude]="mapLng">
+  </agm-marker>
+    <span *ngIf="noise">
+    <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.noise*10" [fillColor]="'yellow'"
+                [fillOpacity]="0.05 + info.noise/100"></agm-circle>
+    </span>
+    <span *ngIf="chimic">
+    <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.chimic*30" [fillColor]="'red'"
+                [fillOpacity]="0.03 + info.chimic/100"></agm-circle>
+    </span>
+    <span *ngIf="waste">
+    <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.waste*20" [fillColor]="'green'"
+                [fillOpacity]="0.03 + info.waste/100"></agm-circle>
+    </span>
+    </span>
+  </agm-map>
+
+
 </ng-template>

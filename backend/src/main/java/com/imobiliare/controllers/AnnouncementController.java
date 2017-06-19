@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.imobiliare.DTOs.AnnouncementDTO;
+import com.imobiliare.DTOs.UserDTO;
 import com.imobiliare.enums.UserRoles;
 import com.imobiliare.models.Announcement;
 import com.imobiliare.models.RealEstate;
@@ -66,8 +67,25 @@ public class AnnouncementController extends Controller {
 		announcements.forEach((k) -> announcementDTOs.add(announcementTransformer.toDTO(k)));
 		return new ResponseEntity<List<AnnouncementDTO>>(announcementDTOs, HttpStatus.OK);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value="/popular")
+
+	@RequestMapping(method = RequestMethod.GET, value = "/myAnnouncements")
+	public ResponseEntity<List<AnnouncementDTO>> getUserAnnouncements(HttpServletRequest request) {
+		JwtUser sessionUser = (JwtUser) request.getAttribute("jwtUser");
+		try {
+			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < 1) {
+				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			}
+		} catch (InvalidRoleInfoException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		}
+
+		List<Announcement> announcements = this.announcementService.getMyAnnouncements(sessionUser.getId());
+		List<AnnouncementDTO> announcementDTOs = new ArrayList<>();
+		announcements.forEach((k) -> announcementDTOs.add(announcementTransformer.toDTO(k)));
+		return new ResponseEntity<List<AnnouncementDTO>>(announcementDTOs, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/popular")
 	public ResponseEntity<List<AnnouncementDTO>> getMostPopular() {
 		List<Announcement> announcements = announcementService.getMostPopular();
 		if (announcements == null) {
@@ -111,6 +129,8 @@ public class AnnouncementController extends Controller {
 		realEstateService.save(realEstate);
 		announcementDTO.getRealEstate().setId(realEstate.getId());
 
+		announcementDTO.setOwner(new UserDTO());
+		announcementDTO.getOwner().setId(sessionUser.getId());
 		Announcement announcement = announcementTransformer.toModel(announcementDTO);
 		announcementService.save(announcement);
 		return new ResponseEntity<>(HttpStatus.CREATED);
@@ -129,10 +149,10 @@ public class AnnouncementController extends Controller {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 		announcementService.incViewNumber(id);
-		announcement.setViewNumber(announcement.getViewNumber()+1);
+		announcement.setViewNumber(announcement.getViewNumber() + 1);
 		return new ResponseEntity<AnnouncementDTO>(announcementTransformer.toDTO(announcement), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/type={type}")
 	public ResponseEntity<List<AnnouncementDTO>> getByRealEstateType(@PathVariable("type") String type) {
 		try {

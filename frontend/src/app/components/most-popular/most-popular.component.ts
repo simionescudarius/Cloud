@@ -36,7 +36,7 @@ export class MostPopularComponent implements OnInit {
           announcement.realEstate.roomNumber = temp[index].realEstate.roomNumber;
           announcement.realEstate.zone.name = temp[index].realEstate.zone.name;
           announcement.realEstate.zone.latitude = temp[index].realEstate.zone.latitude;
-          announcement.realEstate.zone.longidute = temp[index].realEstate.zone.longidute;
+          announcement.realEstate.zone.longitude = temp[index].realEstate.zone.longitude;
           this.mostPopular.push(announcement);
         }
         console.log(this.mostPopular[0].realEstate.area);

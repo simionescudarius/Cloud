@@ -179,6 +179,12 @@ public class Announcement {
 			this.ownerId = ownerId;
 			return this;
 		}
+		
+		public AnnouncementBuilder price(int price) {
+			this.price = price;
+			return this;
+		}
+
 
 		public AnnouncementBuilder name(String name) {
 			this.name = name;

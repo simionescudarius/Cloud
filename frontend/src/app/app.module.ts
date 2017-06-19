@@ -18,13 +18,18 @@ import {MapComponent} from "./components/map/map.component";
 import {AgmCoreModule} from "@agm/core";
 import {UserAnnouncementsComponent} from "./components/user-announcements/user-announcements.component";
 import {LeftPanelComponent} from "./components/left-panel/left-panel.component";
+import {AnnouncementFormComponent} from "app/components/announcement-form/announcement-form.component";
+import {MeetingsRequestsComponent} from "./components/meetings-requests/meetings-requests.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'announcement/:id', component: AnnouncementComponent},
-  {path: 'searchResult', component: SearchResultComponent},
-  {path: 'myProfile', component: UserProfileComponent}
+  {path: 'searchResult/:type/:roomNumber', component: SearchResultComponent},
+  {path: 'myProfile', component: UserProfileComponent},
+  {path: 'announcementForm', component: AnnouncementFormComponent},
+  {path: 'meetingsRequests', component: MeetingsRequestsComponent},
+  {path: 'myAnnouncements', component: UserAnnouncementsComponent}
 ];
 
 @NgModule({
@@ -41,7 +46,9 @@ const routes: Routes = [
     UserProfileComponent,
     MapComponent,
     UserAnnouncementsComponent,
-    LeftPanelComponent
+    LeftPanelComponent,
+    AnnouncementFormComponent,
+    MeetingsRequestsComponent
   ],
   imports: [
     BrowserModule,

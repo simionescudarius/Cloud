@@ -18,8 +18,9 @@ public class MeetingTransformer implements Transformer<Meeting, MeetingDTO> {
 	}
 
 	public List<MeetingDTO> toDTOList(List<Meeting> list) {
-		if (list == null)
+		if (list == null || list.isEmpty()) {
 			return null;
+		}
 		List<MeetingDTO> meetingsDTOs = new ArrayList<>();
 		list.forEach((k) -> meetingsDTOs.add(toDTO(k)));
 		return meetingsDTOs;

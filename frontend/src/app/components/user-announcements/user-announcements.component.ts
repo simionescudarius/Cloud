@@ -2,18 +2,20 @@ import {Component, OnInit} from '@angular/core';
 import {Announcement} from "../announcement/Announcement";
 import {AnnouncementService} from "app/services/announcement.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-user-announcements',
   templateUrl: './user-announcements.component.html',
   styleUrls: ['./user-announcements.component.css'],
-  providers:[AnnouncementService]
+  providers: [AnnouncementService, AuthenticationService]
 })
 export class UserAnnouncementsComponent implements OnInit {
 
   userAnnouncements: Announcement[] = [];
+  logged: boolean = false;
 
-  constructor(private _announcementService: AnnouncementService, private _router: Router) {
+  constructor(private _announcementService: AnnouncementService, private _router: Router, private _authenticationService: AuthenticationService) {
   }
 
   redirect(id) {
@@ -21,7 +23,23 @@ export class UserAnnouncementsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._announcementService.getMostPopular().subscribe(
+    if (localStorage.getItem('currentUser') != null) {
+      this._authenticationService.verify().subscribe(
+        data => {
+          if (data == "200") {
+            this.logged = true;
+          } else {
+            this.logged = false;
+          }
+        },
+        error => {
+          alert("Eroare:" + error);
+        }
+      )
+    } else {
+      this.logged = false;
+    }
+    this._announcementService.getMyAnnouncements().subscribe(
       data => {
         let temp = data.json();
         for (let index = 0; index < temp.length; ++index) {
@@ -37,7 +55,7 @@ export class UserAnnouncementsComponent implements OnInit {
           announcement.realEstate.roomNumber = temp[index].realEstate.roomNumber;
           announcement.realEstate.zone.name = temp[index].realEstate.zone.name;
           announcement.realEstate.zone.latitude = temp[index].realEstate.zone.latitude;
-          announcement.realEstate.zone.longidute = temp[index].realEstate.zone.longidute;
+          announcement.realEstate.zone.longitude = temp[index].realEstate.zone.longitude;
           this.userAnnouncements.push(announcement);
         }
       },

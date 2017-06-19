@@ -12,7 +12,7 @@ import io.jsonwebtoken.JwtException;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = { "/v1/announcements/post", "/v1/users/*", "/v1/auth/verify", "/v1/favourites", "/v1/favourites/*", "/v1/meetings/*"  })
+@WebFilter(urlPatterns = { "/v1/announcements/post", "/v1/announcements/myAnnouncements", "/v1/users/*", "/v1/auth/verify", "/v1/favourites", "/v1/favourites/*", "/v1/meetings/*"  })
 public class JwtFilter implements Filter {
 	@Autowired
 	private JwtService jwtTokenService;
