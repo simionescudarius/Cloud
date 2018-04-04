@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "useful-airlock-196617",
+  "private_key_id": "220a9971d3e80cd0e3453d139ebc47a7a1ccfa33",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCsuE12jGhj1HGv\nvgcM6XLxVL5U6I+mOJ3Yc1/5LJXjhMpShjlBC/5FL5yPdOoPNeV3f2iMqV26/ltA\nFnYhqe4EFEJL7gv2Dc1HnR3rZcYIjfE0UOQSWHtMtNqVyXfk1CoLNUEthMUkWjpc\nJoY90ykN2jriJwclZpZ8dbqkLpx7hDw0NwRDu2MHpbIvMPawyUIXbubhoACprZ2Q\n42C3swKavgwUry1CqenqNFfmChZjxniC2gzB8ONW08iIq136mpR5QpxyQ74For/v\ncfm7DIk2Ft5gDeYbjMXZInCSQfh2VaT9GiOUI7WY+CbLm3uVX13xjq5UOe80sboX\nrTIRXeOLAgMBAAECggEAG7bnFyKojXxFUcHYN8Yt33ONpuo6Qp3LFjRNLhptYrio\nDl3jSgC2qDtfj9VeyVoInAghqpByrdKqqbnw8q3lt1nY2X41BSJp0hfv+Rm3kR/V\nmGNydU8lWcWbXXWae2lf5bSB5N/tEkw4GRlFaR489DAUSr2gc+vmMcpiTH3+NgNa\nIJWULrfCI1NviwMyIAUXdZDEoHHgVex/Vz5DsEdqiZ3yECMB8VfPBC9UQNn2gQYH\nnXxeuwyoTBN8Toqpu6VM/mHwj/0hOwCncZqCvG32HQogR9xhSpwz5vFR85B3gOpf\n6AppKGTCbvUzwJez4P4oL569bGKxAo5joxfWncpowQKBgQDozxvKCQs9KjWxlQyf\niI0D79vjNkW6Rj/fhB9DFDJOlNTfzXunNrZyHXV56vcu9pIKDMS99o+oXrCeoFe1\n+lscjNP6yiDPkKf5DuTBaGcBh97PnNLtZun9tpa32OB6m9qma9Zl0N8DMjxORYv3\nDBJFMZMpQE3O99ap0zdNIXefuQKBgQC97NrX+GB5VojDZAgr2B1KQwdTGSGVXV8C\nBjPtw/NXyI1z/j2yiemG5KSQqQefyG6+axSGBTxXSaVYZ1RUyUEbt3xjGEWRQ/Qx\ncsMPc3H03NshHkKi2FYWDlv8YOeymOar7yztHcfj3/mc+8z/swaRc8OA6XbBKz7R\n6TuGWI2XYwKBgDhUTEQBFjARc3ZpOumqz3vhYFHEgvCEKNY7EJlZXKa4yhzwife2\nfER2LkN2f6JkVIeL+VqBOtchOhjXcQF99uech3nJyFCQjqPrX5wQV8P+DQIszrhU\nS09xC1ymZAImjavwsapm9F7Am+jQWQJIcG8/hHzZqznlq5HhoiLOczQ5AoGAFcLO\nrFIsE5sDnoeWnBdt+7VEYJQPkgKZwSyexI5gEl3LP1ARF6TPmgIWjPChDAC2F6FD\nP7vX1xR8Gm30bqaEjD1wxhXg2q0TjJremKWcl/a6MMg70FbDPlG03mzn/0GfpHGK\nDz0LSyO9gOwk5+NGTGIcM2gMkEN5NinoBROeXYsCgYBfghd5fifzwFXmn21uogd3\n9VItEgiUuJVJbGCl+PI3Q5nDSNjeLOpfdYPP+inkJrFIhpSzObQtgUQ5UMXrHyxa\nBM5PRpFCJGQBMd33ct9NeZZ57hyeX6lRXPrtGGAlhG8O/piG6rNCL8JCZU3Z39+v\nFXhMUlbWplHuAognX0KzVg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "translate@useful-airlock-196617.iam.gserviceaccount.com",
+  "client_id": "107342379194672985071",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translate%40useful-airlock-196617.iam.gserviceaccount.com"
+}
