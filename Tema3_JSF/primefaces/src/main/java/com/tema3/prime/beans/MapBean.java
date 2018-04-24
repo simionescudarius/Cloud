@@ -22,7 +22,7 @@ public class MapBean implements Serializable {
 
 	@PostConstruct
 	public void testMap() {
-		testDatabase();
+		//testDatabase();
 
 	}
 
