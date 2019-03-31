@@ -16,11 +16,9 @@
 #
 # This sample has manual_scaling set to 1.
 #
-runtime: java
-env: flex
-
-runtime_config:  # Optional
-  jdk: openjdk8
+api_version: '0.1'
+runtime: java8
+env: standard
 
 handlers:
 - url: /.*
