@@ -19,6 +19,10 @@
 api_version: '0.1'
 env: flex
 
+datasource:
+  driverClassName: com.mysql.cj.jdbc.Driver 
+  url: jdbc:mysql://google/cloudTema3?cloudSqlInstance=complete-kite-236211:europe-north1:cloud-mysql-database&socketFactory=com.google.cloud.sql.mysql.SocketFactory
+
 runtime_config:  
   jdk: openjdk8
   server: tomcat8 # Run on Tomcat8
