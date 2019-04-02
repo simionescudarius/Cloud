@@ -22,6 +22,10 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<appengine.maven.plugin>1.3.2</appengine.maven.plugin>
+		<INSTANCE_CONNECTION_NAME>complete-kite-236211:europe-north1:cloud-mysql-database</INSTANCE_CONNECTION_NAME>
+		<user>cloud-tema3-user</user>
+		<password>cloud-tema3-password</password>
+		<database>cloudTema3</database>
 	</properties>
 
 	<dependencies>
@@ -57,7 +61,12 @@
 		<dependency>
 			<groupId>com.google.cloud.sql</groupId>
 			<artifactId>mysql-socket-factory</artifactId>
-			<version>1.0.5</version>
+			<version>1.0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.cloud.sql</groupId>
+			<artifactId>mysql-socket-factory-connector-j-8</artifactId>
+			<version>1.0.13</version>
 		</dependency>
 
 		<!-- TRANSLATE -->
@@ -88,44 +97,6 @@
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>${appengine.maven.plugin}</version>
 			</plugin>
-			<!-- [START cargo] -->
-			<!-- Used for local testing (uses Cargo for embedded Tomcat8 launch) -->
-			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>1.6.5</version>
-				<configuration>
-					<container>
-						<containerId>tomcat8x</containerId>
-						<artifactInstaller>
-							<groupId>org.apache.tomcat</groupId>
-							<artifactId>tomcat</artifactId>
-							<version>8.5.2</version>
-						</artifactInstaller>
-					</container>
-					<configuration>
-						<type>standalone</type>
-						<home>
-							${project.build.directory}/apache-tomcat-8.5.2
-						</home>
-						<properties>
-							<cargo.servlet.port>8080</cargo.servlet.port>
-							<cargo.logging>high</cargo.logging>
-						</properties>
-					</configuration>
-					<deployables>
-						<deployable>
-							<groupId>${project.groupId}</groupId>
-							<artifactId>${project.artifactId}</artifactId>
-							<type>war</type>
-							<properties>
-								<context>/</context>
-							</properties>
-						</deployable>
-					</deployables>
-				</configuration>
-			</plugin>
-			<!-- [END cargo] -->
 		</plugins>
 	</build>
 
