@@ -1,4 +1,4 @@
-package cloud.tema3.controller;
+package cloud.tema3.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
