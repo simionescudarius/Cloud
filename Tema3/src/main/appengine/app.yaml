@@ -19,9 +19,13 @@
 api_version: '0.1'
 env: flex
 
-datasource:
-  driverClassName: com.mysql.cj.jdbc.Driver 
-  url: jdbc:mysql://google/cloudTema3?cloudSqlInstance=complete-kite-236211:europe-north1:cloud-mysql-database&socketFactory=com.google.cloud.sql.mysql.SocketFactory
+spring:
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://google/cloudTema3?cloudSqlInstance=complete-kite-236211:europe-north1:cloud-mysql-database&user=xxx&password=xxx
 
 runtime_config:  
   jdk: openjdk8
