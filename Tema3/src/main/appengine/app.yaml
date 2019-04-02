@@ -19,14 +19,6 @@
 api_version: '0.1'
 env: flex
 
-spring:
-  jpa:
-    database: MYSQL
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:mysql://google/cloudTema3?cloudSqlInstance=complete-kite-236211:europe-north1:cloud-mysql-database&user=xxx&password=xxx
-
 runtime_config:  
   jdk: openjdk8
   server: tomcat8 # Run on Tomcat8
