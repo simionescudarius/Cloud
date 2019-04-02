@@ -1,13 +1,15 @@
 package cloud.tema3.DTOs;
 
-public class UserDTO {
+import java.io.Serializable;
+
+public class UserDTO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
 	
-	// Getters and Setters
 	public String getEmail() {
 		return email;
 	}

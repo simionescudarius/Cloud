@@ -26,7 +26,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	UserTransformer userTransformer;
+	private UserTransformer userTransformer;
 	
 	@ApiOperation(value = "Insert a new user.")
 	@RequestMapping(method = RequestMethod.POST, consumes="application/json", produces = "application/json")
