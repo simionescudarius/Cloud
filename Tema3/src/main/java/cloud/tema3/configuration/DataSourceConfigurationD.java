@@ -13,9 +13,9 @@ public class DataSourceConfigurationD {
 	@Bean
 	public DataSource getDataSource() {
 		DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.driverClassName("com.mysql.jdbc.Driver");
-		dataSourceBuilder.url(
-				"jdbc:mysql://google/cloudTema3?useSSL=false&cloudSqlInstance=complete-kite-236211:europe-north1:cloud-mysql-database&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=cloud-tema3-user&password=cloud-tema3-password");
+		dataSourceBuilder.driverClassName("org.h2.Driver");
+		dataSourceBuilder.username("SA");
+		dataSourceBuilder.url("jdbc:h2:mem:cloudDev");
 		return dataSourceBuilder.build();
 	}
 }
