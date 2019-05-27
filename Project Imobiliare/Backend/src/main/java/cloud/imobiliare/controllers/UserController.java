@@ -23,30 +23,26 @@ import cloud.imobiliare.enums.UserUpdateEnum;
 import cloud.imobiliare.security.JWebTokenUser;
 import cloud.imobiliare.services.UserService;
 import cloud.imobiliare.transformers.UserTransformer;
-import cloud.imobiliare.validators.UserValidator;
 
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/v1/users")
 public class UserController extends Controller {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@Autowired
-	UserTransformer userTransformer;
-
-	@Autowired
-	UserValidator userValidator;
+	private UserTransformer userTransformer;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> getAll(HttpServletRequest request) {
 		JWebTokenUser sessionUser = (JWebTokenUser) request.getAttribute("jwtUser");
 		try {
-			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_5_AUTH) {
+			if (sessionUser == null || UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < LEVEL_5_AUTH) {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		List<User> users = userService.getAll();
 		if (users == null) {
@@ -65,7 +61,7 @@ public class UserController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		User user = userService.getById(sessionUser.getId());
 		if (user == null) {
@@ -74,7 +70,7 @@ public class UserController extends Controller {
 		UserDTO userDTO = userTransformer.toDTO(user);
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/id={userId}")
 	public ResponseEntity<UserDTO> getUser(@PathVariable("userId") Long userId, HttpServletRequest request) {
 		JWebTokenUser sessionUser = (JWebTokenUser) request.getAttribute("jwtUser");
@@ -83,7 +79,7 @@ public class UserController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		User user = userService.getById(userId);
 		if (user == null) {
@@ -102,13 +98,13 @@ public class UserController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		try {
 			validateNullData(email);
 			user = userService.getByEmail(email);
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		if (user == null) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -128,7 +124,7 @@ public class UserController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (IllegalArgumentException | InvalidRoleInfoException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		User user = userService.getById(id);
@@ -152,7 +148,7 @@ public class UserController extends Controller {
 				break;
 			}
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(HttpStatus.ACCEPTED);
 	}
@@ -165,12 +161,12 @@ public class UserController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		try {
 			validateNullData(id);
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		userService.delete(id);

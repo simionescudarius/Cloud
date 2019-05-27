@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import cloud.imobiliare.DTOs.TranslateDTO;
+import cloud.imobiliare.DTOs.TranslateResultDTO;
 import cloud.imobiliare.services.GoogleTranslateService;
 
 @RestController
@@ -19,10 +20,17 @@ public class TranslateController {
 	private GoogleTranslateService googleTranslateService;
 
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
-	public ResponseEntity<String> post(@RequestBody TranslateDTO translateDto) {
+	public ResponseEntity<TranslateResultDTO> post(@RequestBody TranslateDTO translateDto) {
+		if(translateDto.getSourceLanguage().getDescription().equalsIgnoreCase(translateDto.getTargetLanguage().getDescription())) {
+			return new ResponseEntity<TranslateResultDTO>(HttpStatus.BAD_REQUEST);
+		}
+		
 		String translatedText = googleTranslateService.translateText(translateDto.getText(),
 				translateDto.getSourceLanguage().name(), translateDto.getTargetLanguage().name());
 
-		return new ResponseEntity<String>(translatedText, HttpStatus.OK);
+		TranslateResultDTO result = new TranslateResultDTO();
+		result.setTextResult(translatedText);
+
+		return new ResponseEntity<TranslateResultDTO>(result, HttpStatus.OK);
 	}
 }

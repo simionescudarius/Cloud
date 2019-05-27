@@ -54,7 +54,7 @@ public class MeetingController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException | IllegalArgumentException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		List<Meeting> test = new ArrayList<>();
 		test = meetingService.getMyMeetings(userService.getById(sessionUser.getId()));
@@ -79,7 +79,7 @@ public class MeetingController extends Controller {
 				throw new IllegalArgumentException();
 			}
 		} catch (InvalidRoleInfoException | IllegalArgumentException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Meeting meeting = new Meeting();
 		meeting.setUser1(userService.getById(sessionUser.getId()));
@@ -104,7 +104,7 @@ public class MeetingController extends Controller {
 				throw new IllegalArgumentException();
 			}
 		} catch (InvalidRoleInfoException | IllegalArgumentException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		if (sessionUser.getId() != meeting.getUser1().getId()) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);

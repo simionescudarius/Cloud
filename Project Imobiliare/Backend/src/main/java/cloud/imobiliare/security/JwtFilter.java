@@ -47,7 +47,7 @@ public class JwtFilter implements Filter {
 				httpResponse.setStatus(HttpServletResponse.SC_OK);
 				return;
 			}
-			httpResponse.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
+			httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return;
 		}
 

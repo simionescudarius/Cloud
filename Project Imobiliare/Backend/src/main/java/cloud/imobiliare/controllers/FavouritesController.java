@@ -49,7 +49,7 @@ public class FavouritesController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		List<FavouriteAnnouncement> list = new ArrayList<>(
@@ -67,7 +67,7 @@ public class FavouritesController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		List<FavouriteAnnouncement> list = new ArrayList<>(
@@ -94,7 +94,7 @@ public class FavouritesController extends Controller {
 			}
 			validateNullData(announcementId);
 		} catch (InvalidRoleInfoException | IllegalArgumentException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		FavouriteAnnouncement x = new FavouriteAnnouncement();
 		FavouritesKey k = new FavouritesKey();

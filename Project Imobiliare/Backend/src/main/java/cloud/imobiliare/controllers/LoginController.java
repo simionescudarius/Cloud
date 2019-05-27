@@ -40,7 +40,7 @@ public class LoginController {
 		try {
 			userService.validateCredentials(auth.getUsername(), auth.getPassword());
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} catch (InvalidCredentialsException exception) {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
@@ -58,8 +58,9 @@ public class LoginController {
 	public ResponseEntity<?> save(@RequestBody UserDTO userDto, BindingResult validationResult) {
 		userValidator.validate(userDto, validationResult);
 		if (validationResult.hasErrors()) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(validationResult.getAllErrors().get(0).getCode(), HttpStatus.BAD_REQUEST);
 		}
+		
 		if (userService.getByEmail(userDto.getEmail()) != null) {
 			return new ResponseEntity<>(HttpStatus.IM_USED);
 		}

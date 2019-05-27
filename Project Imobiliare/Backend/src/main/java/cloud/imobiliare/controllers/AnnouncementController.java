@@ -66,7 +66,7 @@ public class AnnouncementController extends Controller {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		List<AnnouncementDTO> announcements = announcementService.getMyAnnouncements(sessionUser.getId());
@@ -88,24 +88,28 @@ public class AnnouncementController extends Controller {
 		ZoneDTO zone = announcementDTO.getRealEstate().getZone();
 		JWebTokenUser sessionUser = (JWebTokenUser) request.getAttribute("jwtUser");
 
+		if(sessionUser == null) {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
+		
 		try {
 			if (UserRoles.toEnum(sessionUser.getRole()).getRightsLevel() < 1) {
 				return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 			}
 		} catch (InvalidRoleInfoException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		announcementValidator.validate(announcementDTO, validationResult);
 
 		if (validationResult.hasErrors()) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		RealEstateType type = realEstateTypeService.getByName(announcementDTO.getRealEstate().getType().getName());
 
 		if (type == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		zoneService.save(zone);
@@ -127,7 +131,7 @@ public class AnnouncementController extends Controller {
 		try {
 			validateNullData(id);
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		AnnouncementDTO announcement = announcementService.getById(id);
@@ -144,7 +148,7 @@ public class AnnouncementController extends Controller {
 		try {
 			validateNullData(type);
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		List<AnnouncementDTO> announcements = announcementService.getByRealEstateType(type);
@@ -160,7 +164,7 @@ public class AnnouncementController extends Controller {
 		try {
 			validateNullData(type, roomNumber);
 		} catch (IllegalArgumentException exception) {
-			return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 
 		List<AnnouncementDTO> announcements = announcementService.getByRealEstateRoomNumberAndType(roomNumber, type);
