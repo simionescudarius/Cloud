@@ -54,7 +54,7 @@ public class LoginController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/register")
+	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public ResponseEntity<?> save(@RequestBody UserDTO userDto, BindingResult validationResult) {
 		userValidator.validate(userDto, validationResult);
 		if (validationResult.hasErrors()) {
