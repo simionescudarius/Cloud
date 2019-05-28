@@ -87,6 +87,13 @@
 			<artifactId>jjwt</artifactId>
 			<version>0.9.0</version>
 		</dependency>
+		
+		<!--  PASSWORD ENCRYPTION -->
+		<dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+	    <version>0.3m</version>
+        </dependency>
 
 		<!-- TEST -->
 		<dependency>
