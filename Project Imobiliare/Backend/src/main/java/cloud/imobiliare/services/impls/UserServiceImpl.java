@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.apache.http.auth.InvalidCredentialsException;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void save(User object) {
+		String encryptedPassword = BCrypt.hashpw(object.getPassword(), BCrypt.gensalt());
+		object.setPassword(encryptedPassword);
 		userRepository.save(object);
 	}
 
@@ -72,8 +75,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void validateCredentials(String email, String password) throws InvalidCredentialsException {
-		String passwrd = userRepository.getPassword(email);
-		if (passwrd == null || !passwrd.equals(password)) {
+		String encryptedPassword = userRepository.getPassword(email);
+		if (encryptedPassword == null || !BCrypt.checkpw(password, encryptedPassword)) {
 			throw new InvalidCredentialsException();
 		}
 	}
