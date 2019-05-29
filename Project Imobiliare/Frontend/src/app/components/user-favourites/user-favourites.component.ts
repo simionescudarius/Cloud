@@ -1,0 +1,67 @@
+import { Component, OnInit } from '@angular/core';
+import { Announcement } from "../../models/Announcement";
+import { AnnouncementService } from "../../services/announcement.service";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "../../services/authentication.service";
+
+@Component({
+  selector: 'app-user-favourites',
+  templateUrl: './user-favourites.component.html',
+  styleUrls: ['./user-favourites.component.css'],
+  providers: [AnnouncementService, AuthenticationService]
+})
+export class UserFavouritesComponent implements OnInit {
+
+  favourites: Announcement[] = [];
+  logged: boolean = false;
+
+  constructor(private _announcementService: AnnouncementService, private _router: Router, private _authenticationService: AuthenticationService) { }
+
+  redirect(id) {
+    this._router.navigate(['/announcement', id]);
+  }
+
+  ngOnInit() {
+    if (localStorage.getItem('token') != null) {
+      this._authenticationService.verify().subscribe(
+        data => {
+          if (data.status === 200) {
+            this.logged = true;
+          } else {
+            this.logged = false;
+          }
+        },
+        error => {
+          alert("Eroare:" + error);
+        }
+      )
+    } else {
+      this.logged = false;
+    }
+    this._announcementService.getFavouriteAnnouncements().subscribe(
+      data => {
+        let temp = data.body;
+        for (let index = 0; index < temp.length; ++index) {
+          var announcement = new Announcement();
+          announcement.id = temp[index].id;
+          announcement.name = temp[index].name;
+          announcement.price = temp[index].price;
+          announcement.viewNumber = temp[index].viewNumber;
+          announcement.postDate = temp[index].postDate;
+          announcement.expireDate = temp[index].expireDate;
+          announcement.realEstate.area = temp[index].realEstate.area;
+          announcement.realEstate.type.name = temp[index].realEstate.type.name;
+          announcement.realEstate.roomNumber = temp[index].realEstate.roomNumber;
+          announcement.realEstate.zone.name = temp[index].realEstate.zone.name;
+          announcement.realEstate.zone.latitude = temp[index].realEstate.zone.latitude;
+          announcement.realEstate.zone.longitude = temp[index].realEstate.zone.longitude;
+          this.favourites.push(announcement);
+        }
+      },
+      error => {
+        alert("Error" + error);
+      }
+    );
+  }
+
+}

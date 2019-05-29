@@ -1,0 +1,56 @@
+<ul class="nav nav-pills nav-stacked nav-email shadow mb-20" style="margin-top: 15px;">
+  <li>
+    <a href="inbox.html"><i class="glyphicon glyphicon-envelope"></i> Inbox
+      <span class="label label-info pull-right inbox-notification">35</span>
+    </a>
+  </li>
+  <li>
+    <a href="sendmail.html"><i class="glyphicon glyphicon-send"></i> Sent Mail</a>
+  </li>
+  <li>
+    <a href="important.html"><i class="glyphicon glyphicon-fire"></i> Important
+      <span class="label label-info pull-right inbox-notification">5</span>
+    </a>
+  </li>
+  <li>
+    <a href="drafts.html">
+      <i class="glyphicon glyphicon-file"></i> Drafts
+    </a>
+  </li>
+  <li>
+    <a href="trash.html"> <i class="glyphicon glyphicon-folder-close"></i> Trash
+      <span class="label label-info pull-right inbox-notification">10</span>
+    </a>
+  </li>
+</ul>
+
+<h5 class="nav-email-subtitle">More</h5>
+<ul class="nav nav-pills nav-stacked nav-email mb-20 rounded shadow" style="padding-bottom: 100%;">
+  <li>
+    <a routerLink="/myProfile">
+      <i class="glyphicon glyphicon-user"></i> My Profile <span class="label label-danger pull-right"></span>
+    </a>
+  </li>
+  <li>
+    <a routerLink="/myAnnouncements">
+      <i class="glyphicon glyphicon-list-alt"></i> My Announcements <span class="label label-danger pull-right"></span>
+    </a>
+  </li>
+  <li>
+    <a (click)="redirectTo('myFavourites')">
+      <i class="glyphicon glyphicon-heart"></i> My Favourites <span class="label label-danger pull-right">10</span>
+    </a>
+  </li>
+  <li>
+    <a (click)="redirectTo('meetingsRequests')">
+      <i class="glyphicon glyphicon-calendar"></i> Meetings Requests <span
+        class="label label-danger pull-right">3</span>
+    </a>
+  </li>
+  <li>
+    <a (click)="redirectTo('meetingsInProgress')">
+      <i class="glyphicon glyphicon-calendar"></i> Meetings in Progress
+      <span class="label label-danger pull-right">3</span>
+    </a>
+  </li>
+</ul>

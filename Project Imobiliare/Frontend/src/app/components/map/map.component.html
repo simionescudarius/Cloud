@@ -1,0 +1,48 @@
+<div class="container switch-container">
+  <div class="row">
+    <div class="col-md-2 col-sm-2 col-xs-4">
+      <h5>Noise pollution</h5>
+      <div class="switch">
+        <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="noiseP()">
+        <label for="cmn-toggle-1"></label>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-4">
+      <h5>Chimic pollution</h5>
+      <div class="switch">
+        <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="chimicP()">
+        <label for="cmn-toggle-2"></label>
+      </div>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-4">
+      <h5>Waste pollution</h5>
+      <div class="switch">
+        <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round-flat" type="checkbox" (click)="wasteP()">
+        <label for="cmn-toggle-3"></label>
+      </div>
+    </div>
+  </div>
+</div>
+<agm-map [latitude]="mapLat" [longitude]="mapLng" [zoom]="15">
+  <span *ngFor="let info of announcementInfos">
+    <agm-marker [latitude]=info.lat [longitude]=info.lng>
+      <agm-info-window>
+        <h3><a (click)="redirectToAnnouncement(info.id)">{{info.title}} {{info.zone}}</a></h3>
+        <div>Area: {{info.area}} m<sup>2</sup></div>
+        <div>Price: {{info.price}} &euro;</div>
+      </agm-info-window>
+    </agm-marker>
+    <span *ngIf="noise">
+      <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.noise*10" [fillColor]="'yellow'"
+        [fillOpacity]="0.05 + info.noise/100"></agm-circle>
+    </span>
+    <span *ngIf="chimic">
+      <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.chimic*30" [fillColor]="'red'"
+        [fillOpacity]="0.03 + info.chimic/100"></agm-circle>
+    </span>
+    <span *ngIf="waste">
+      <agm-circle [latitude]="info.lat" [longitude]="info.lng" [radius]="50 + info.waste*20" [fillColor]="'green'"
+        [fillOpacity]="0.03 + info.waste/100"></agm-circle>
+    </span>
+  </span>
+</agm-map>

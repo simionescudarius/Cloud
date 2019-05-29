@@ -1,0 +1,12 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: dist/cloud-angular/index.html
+  upload: dist/cloud-angular/index.html
+- url: /home
+  static_files: dist/cloud-angular/index.html
+  upload: dist/cloud-angular/index.html
+- url: /
+  static_dir: dist/cloud-angular
