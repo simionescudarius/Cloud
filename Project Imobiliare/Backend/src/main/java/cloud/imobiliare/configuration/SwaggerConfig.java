@@ -29,8 +29,8 @@ public class SwaggerConfig {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfo(
-			      "RESTful API - Cloud Tema 3", 
-			      "RESTful API - Cloud Tema 3", 
+			      "RESTful API - Cloud Project", 
+			      "RESTful API - Cloud Project", 
 			      "API TOS", 
 			      "Terms of service", 
 			      new Contact("Ilie-Andrei Daneliuc & Darius Simionescu", "", "daneliucilieandrei@gmail.com; simionescudarius10c@gmail.com;"), 
